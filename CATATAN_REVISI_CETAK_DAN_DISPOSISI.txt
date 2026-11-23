@@ -1,0 +1,7 @@
+REVISI 23 NOVEMBER 2026
+
+1. Klasifikasi Arsip: menghapus pengganti window.print yang membuka overlay preview. Tombol Cetak Daftar kini memanggil dialog cetak browser secara langsung.
+2. Peminjaman Arsip: menghapus pengganti window.print yang membuka overlay preview. Fungsi cetak langsung memakai dialog cetak browser.
+3. Disposisi: tombol simpan pada akun Admin/Sekretaris diberi label “Simpan & Teruskan ke Pemimpin” dan menyimpan disposisi dengan status Menunggu ACC melalui API yang sudah tersedia. Daftar persetujuan Pemimpin mengambil data dari endpoint disposisi.
+
+CATATAN: Pengiriman WhatsApp otomatis belum aktif pada paket ini. Diperlukan kredensial resmi Meta WhatsApp Cloud API dan konfigurasi server. Notifikasi website tersedia melalui daftar disposisi pada dashboard Pemimpin setelah halaman dimuat ulang.

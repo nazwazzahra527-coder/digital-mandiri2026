@@ -1,0 +1,18 @@
+DIGITAL MANDIRI - REVISI ALUR DISPOSISI PEMIMPIN, SEKRETARIS, ADMIN
+
+Perubahan:
+1. Pemimpin dapat membuka Tinjau Disposisi, melengkapi instruksi, prioritas P/B/R, penerima, tanggal, dan nama penanda tangan.
+2. Pemimpin dapat menekan tombol Simpan Disposisi Pemimpin. Data tersimpan ke SQLite melalui /api/dispositions.
+3. Setelah tersimpan, Pemimpin kembali ke dashboard dan memilih ACC & Tanda Tangani.
+4. ACC mencatat waktu dan nama penyetuju, serta tanggal tanda tangan bila belum diisi.
+5. Setelah ACC, disposisi dikunci agar tidak berubah tanpa proses koreksi resmi.
+6. Admin/Sekretaris dapat membuka lembar disposisi yang sama dan mencetak setelah status Disetujui.
+7. Kotak P, B, R tetap terlihat saat dicetak. Pilihan aktif diberi arsiran; legenda P = Penting, B = Biasa, R = Rahasia tetap tampil.
+8. Cetak menggunakan A4 landscape dan hanya lembar disposisi yang dicetak.
+
+PENTING UNTUK PEMASANGAN:
+ZIP ini sengaja TIDAK menyertakan data/digital_mandiri.db, folder uploads, dan folder lampiran-surat-masuk agar database serta lampiran yang sudah ada di server tidak tertimpa.
+Ekstrak/unggah isi ZIP ke folder aplikasi yang SAMA sebagai penggantian file aplikasi (overlay). Jangan hapus folder data, uploads, atau lampiran-surat-masuk. Jangan membuat database baru.
+Setelah file kode diganti, lakukan Reload web app di PythonAnywhere.
+
+Catatan: autentikasi aplikasi asal masih berbasis sesi browser/localStorage; pembatasan peran belum merupakan sistem keamanan server-side penuh. Jangan gunakan untuk data sangat sensitif sebelum autentikasi server diperkuat.

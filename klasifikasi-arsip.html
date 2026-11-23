@@ -1,0 +1,129 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Klasifikasi Arsip | PT Digital Mandiri</title><link rel="stylesheet" href="style.css"><style>
+/* Pratinjau layar penuh untuk seluruh halaman yang memanggil window.print() */
+#print-preview-overlay{position:fixed;inset:0;z-index:100000;background:#e8edf3;display:none;flex-direction:column}
+#print-preview-overlay.is-open{display:flex}
+#print-preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:#123b68;color:#fff}
+#print-preview-toolbar .actions{display:flex;gap:8px;flex-wrap:wrap}
+#print-preview-toolbar button{border:0;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer}
+#print-preview-toolbar .do-print{background:#fff;color:#123b68}
+#print-preview-toolbar .go-back{background:#dce7f5;color:#123b68}
+#print-preview-scroll{flex:1;overflow:auto;padding:22px;display:flex;justify-content:center;align-items:flex-start}
+#print-preview-paper{background:#fff;width:min(1180px,100%);min-height:700px;padding:24px;box-shadow:0 4px 20px #0002;box-sizing:border-box}
+#print-preview-paper .sidebar,#print-preview-paper .app-top,#print-preview-paper .no-print,
+#print-preview-paper button,#print-preview-paper .toolbar .btn{display:none!important}
+#print-preview-paper .app-content{padding:0!important;margin:0!important}
+@media(max-width:700px){#print-preview-toolbar{align-items:flex-start;flex-direction:column}#print-preview-scroll{padding:8px}#print-preview-paper{padding:10px}}
+@media print{#print-preview-overlay{display:none!important}}
+</style><style>
+/* Cetak klasifikasi arsip: sederhana, minim garis, tanpa kotak bertumpuk */
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  body { background:#fff!important; color:#111!important; }
+  .sidebar,.app-top,.toolbar,.classification-node-actions,.classification-main-action,
+  #openAddClass,#printClassification,.side-label,.side-link { display:none!important; }
+  .app-layout,.app-main,.app-content,.classification-page { display:block!important; width:100%!important; max-width:none!important; margin:0!important; padding:0!important; box-shadow:none!important; border:0!important; }
+  .classification-list,.classification-tree-content,.classification-children,.subclass-wrap,.subsub {
+    display:block!important; margin:0!important; padding:0!important; border:0!important; gap:0!important;
+  }
+  .class-item,.subclass,.classification-node,.subsub-row {
+    display:block!important; border:0!important; border-bottom:1px solid #d6dce4!important;
+    border-radius:0!important; box-shadow:none!important; background:#fff!important;
+    padding:6px 2px!important; margin:0!important; break-inside:avoid;
+  }
+  .class-item>summary,.subclass>summary,.classification-node>summary {
+    display:flex!important; padding:3px 0!important; gap:8px!important;
+  }
+  .class-item>summary:after,.subclass>summary:after,.classification-node>summary:after { display:none!important; }
+  .class-code { background:#fff!important; border:1px solid #cbd5e1!important; border-radius:2px!important; padding:3px 6px!important; min-width:48px!important; }
+  .class-desc { color:#444!important; }
+  details:not([open]) > *:not(summary) { display:block!important; }
+  .classification-node-actions { display:none!important; }
+  a { color:#111!important; text-decoration:none!important; }
+}
+</style><style>
+/* Daftar Klasifikasi Arsip — desain minimalis tanpa garis */
+@media print {
+  .classification-page *,
+  .classification-list *,
+  .classification-tree *,
+  .classification-tree-content *,
+  .classification-children *,
+  .subclass-wrap *,
+  .subsub * {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .classification-list,
+  .classification-tree-content,
+  .classification-children,
+  .subclass-wrap,
+  .subsub,
+  .class-item,
+  .subclass,
+  .classification-node,
+  .subsub-row,
+  .class-item > summary,
+  .subclass > summary,
+  .classification-node > summary {
+    border: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+  .class-code {
+    border: 0 !important;
+    background: #f1f5f9 !important;
+    border-radius: 4px !important;
+    padding: 3px 7px !important;
+    font-weight: 700 !important;
+  }
+  .class-item,
+  .subclass,
+  .classification-node,
+  .subsub-row {
+    padding: 5px 0 !important;
+    margin: 0 !important;
+    break-inside: avoid;
+  }
+  .classification-children,
+  .subclass-wrap,
+  .subsub {
+    padding-left: 14px !important;
+    margin-left: 8px !important;
+  }
+}
+</style></head><body class="classification-page"><div class="app-layout"><aside class="sidebar"><div class="side-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PT DIGITAL<small>MANDIRI</small></span></a></div><div class="side-label">Menu Utama</div><a class="side-link " href="dashboard-admin.html"><span class="ico">▦</span>Beranda</a><a class="side-link " href="surat-masuk.html"><span class="ico">▤</span>Surat Masuk</a><a class="side-link " href="surat-keluar.html"><span class="ico">↗</span>Surat Keluar</a><a class="side-link active" href="klasifikasi-arsip.html"><span class="ico">▧</span>Klasifikasi Arsip</a><a class="side-link " href="peminjaman-arsip.html"><span class="ico">⌂</span>Peminjaman Arsip</a><a class="side-link " href="profil-pengguna.html"><span class="ico">♙</span>Profil Pengguna</a><a class="side-link " href="manajemen-pengguna.html"><span class="ico">♧</span>Manajemen Pengguna</a><a class="side-link " href="riwayat-status.html"><span class="ico">◷</span>Riwayat Status</a><a class="side-link" href="pengaturan-panduan.html"><span class="ico">⚙</span>Pengaturan &amp; Panduan</a><div class="side-label">Akun</div><a class="side-link" href="index.html"><span class="ico">↩</span>Kembali ke Beranda</a></aside><main class="app-main"><div class="app-top"><div><strong>PT DIGITAL MANDIRI</strong><div class="small muted">Sistem Informasi Kearsipan</div></div><div class="userchip"><span class="avatar">A</span><span><b>Admin</b><br><span class="muted">Admin</span></span><a class="btn btn-outline btn-sm" href="index.html">Keluar</a></div></div><div class="app-content"><div class="print-company-header"><img src="assets/logo-digital-mandiri.png" alt="Logo PT Digital Mandiri"><div class="print-company-info"><strong>PT DIGITAL MANDIRI</strong><span>Teknologi Informasi (IT)</span><span>Jl. Teknologi No. 15, Makassar</span><span>Email: info@digitalmandiri.co.id | Telp: (0411) 456789</span></div></div>
+<div class="print-document-title">DAFTAR KLASIFIKASI ARSIP</div><div class="toolbar"><div><div class="breadcrumbs">Beranda　›　Klasifikasi Arsip</div><h2>Klasifikasi Arsip</h2><p class="muted small">Pilih kode untuk melihat kelompok klasifikasi dan contoh subjek arsip.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" type="button" id="openAddClass">＋ Tambah Kode Klasifikasi</button><button class="btn btn-outline" id="printClassification" type="button">⎙ Cetak Daftar</button></div></div><div class="filters"><input id="tableSearch" placeholder="Cari kode atau nama klasifikasi..."></div><div class="classification-list" id="classificationList" aria-live="polite">
+<div class="muted" style="padding:20px">Memuat klasifikasi arsip...</div>
+</div></div></main></div><div id="toast" class="toast"></div><div id="addClassModal" class="class-modal-backdrop" hidden><section class="class-modal" role="dialog" aria-modal="true" aria-labelledby="addClassTitle"><header><div><small>PT DIGITAL MANDIRI</small><h3 id="addClassTitle">Tambah Klasifikasi</h3></div><button type="button" class="class-modal-close" id="closeAddClass" aria-label="Tutup">×</button></header><form id="addClassForm"><div class="class-form-grid"><label>Kode Klasifikasi<input name="code" required placeholder="Masukkan kode klasifikasi" pattern="[0-9]+(\.[0-9]+)*"></label><label>Nama Klasifikasi<input name="name" required placeholder="Masukkan nama klasifikasi"></label><label>Tingkat Klasifikasi<select name="level"><option value="main">Kelompok Utama</option><option value="sub" selected>Sub Klasifikasi</option><option value="detail">Rincian Klasifikasi</option></select></label><label>Kode Induk (opsional)<input name="parent_code" placeholder="Contoh: 100 atau 120"></label><label class="class-description">Deskripsi<textarea name="description" rows="4" placeholder="Masukkan keterangan klasifikasi"></textarea></label></div><p id="classFormMessage" role="status"></p><footer><button type="button" class="btn btn-outline" id="cancelAddClass">Batal</button><button type="submit" class="btn btn-primary">Simpan Klasifikasi</button></footer></form></section></div>
+<style>
+.class-modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.65);display:flex;align-items:center;justify-content:center;padding:20px;z-index:9999}.class-modal-backdrop[hidden]{display:none}.class-modal{width:min(780px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 24px 80px #0004;color:#183047}.class-modal header{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid #e2e8f0}.class-modal header small{letter-spacing:2px;color:#b17b68;font-weight:700}.class-modal h3{margin:7px 0 0;font-size:24px}.class-modal-close{border:1px solid #e2e8f0;background:#fff;border-radius:8px;width:42px;height:42px;font-size:25px;cursor:pointer}.class-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px 26px}.class-form-grid label{display:flex;flex-direction:column;gap:8px;font-weight:650;font-size:14px}.class-form-grid input,.class-form-grid select,.class-form-grid textarea{width:100%;box-sizing:border-box;border:1px solid #d7e0e8;border-radius:10px;padding:13px;font:inherit;background:#f8fafc;color:#243b53}.class-description{grid-column:1/-1}.class-modal form>footer{display:flex;justify-content:flex-end;gap:10px;padding:16px 26px 22px;border-top:1px solid #e2e8f0}.class-modal #classFormMessage{padding:0 26px;color:#b42318;font-size:14px}.class-custom-note{margin:10px 0 0;color:#64748b;font-size:13px}@media(max-width:620px){.class-form-grid{grid-template-columns:1fr}.class-description{grid-column:auto}}
+</style>
+<style>
+.classification-list{display:grid;gap:12px}.class-item{border:1px solid #d9e5ef;border-radius:12px;background:#fff;padding:14px 16px;box-shadow:0 2px 8px rgba(16,55,88,.04)}
+.class-item>summary,.subclass>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.class-item>summary::-webkit-details-marker,.subclass>summary::-webkit-details-marker{display:none}
+.class-item>summary:after,.subclass>summary:after{content:'＋';margin-left:auto;color:#0b5c9c;font-weight:700;font-size:18px}
+.class-item[open]>summary:after,.subclass[open]>summary:after{content:'−'}
+.class-code{display:inline-flex;min-width:62px;justify-content:center;padding:8px 10px;border-radius:8px;background:#e5f1ff;color:#0b4b80;font-weight:800}
+.subclass-wrap{margin:14px 0 0 20px;padding-left:18px;border-left:2px solid #cfe2f3;display:grid;gap:8px}
+.subclass{border:1px solid #e2eaf2;border-radius:8px;padding:10px 12px;background:#f8fbff}.subclass .class-code{min-width:56px;padding:6px 8px;font-size:13px}
+.subsub{margin:10px 0 0 18px;padding-left:14px;border-left:2px solid #d9e8f6;display:grid;gap:6px}.subsub-row{display:flex;gap:10px;align-items:center;padding:7px 9px;background:#eef7f2;border-radius:6px;font-size:14px}
+.class-label{font-weight:650;color:#183c5a}.class-desc{font-size:12px;color:#64748b}.class-item[hidden]{display:none}
+.classification-tree-content{padding:12px 0 4px 20px}.classification-children{margin:8px 0 8px 18px;padding-left:14px;border-left:2px solid #d5e5f3;display:grid;gap:8px}.classification-node{border:1px solid #e2eaf2;border-radius:9px;background:#f8fbff;padding:9px 12px}.classification-node>summary{list-style:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer}.classification-node>summary::-webkit-details-marker{display:none}.classification-node>summary:after{content:'＋';margin-left:4px;color:#0b5c9c;font-weight:800}.classification-node[open]>summary:after{content:'−'}.classification-node-name{font-weight:650;color:#183c5a;flex:1}.classification-node-actions{display:flex;gap:6px;flex-wrap:wrap}.classification-main-action{display:flex;justify-content:flex-end;margin:10px 0 0}.classification-node-actions{padding:8px 0 2px 0;justify-content:flex-start}.classification-node-actions .btn{display:inline-flex;visibility:visible;opacity:1}.classification-node-wrap{display:block}.classification-node-wrap>.classification-node{display:block}.classification-main-info{flex:1}.classification-main-action{margin-left:auto}.add-class-inline{white-space:nowrap}.classification-node .class-code{min-width:64px}@media(max-width:620px){.classification-tree-content{padding-left:4px}.classification-children{margin-left:8px;padding-left:8px}.classification-node-actions{width:100%;padding-left:2px}}
+</style>
+<script>
+const modal=document.getElementById('addClassModal');
+function closeClassModal(){modal.hidden=true;document.getElementById('addClassForm').reset();document.getElementById('classFormMessage').textContent='';document.getElementById('addClassTitle').textContent='Tambah Klasifikasi'}
+document.getElementById('openAddClass').addEventListener('click',()=>{const f=document.getElementById('addClassForm');f.reset();f.elements.parent_code.value='';f.elements.level.value='sub';document.getElementById('addClassTitle').textContent='Tambah Kode Klasifikasi';modal.hidden=false;f.elements.code.focus()});
+document.getElementById('closeAddClass').addEventListener('click',closeClassModal);document.getElementById('cancelAddClass').addEventListener('click',closeClassModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeClassModal()});
+document.getElementById('addClassForm').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget;const d=Object.fromEntries(new FormData(form).entries());const msg=document.getElementById('classFormMessage');msg.style.color='#b42318';msg.textContent='Menyimpan...';try{const r=await fetch('/api/classification-items',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});const result=await r.json();if(!r.ok)throw new Error(result.error||'Gagal menyimpan klasifikasi');msg.style.color='#067647';msg.textContent='Kode berhasil disimpan.';setTimeout(()=>location.reload(),500)}catch(err){msg.textContent=err.message}});
+document.getElementById('printClassification')?.addEventListener('click',async()=>{const list=document.getElementById('classificationList');const btn=document.getElementById('printClassification');btn.disabled=true;try{if(!list||!list.querySelector('details')){await new Promise(resolve=>{let tries=0;const timer=setInterval(()=>{tries++;if(list?.querySelector('details')||tries>=40){clearInterval(timer);resolve()}},100)})}document.querySelectorAll('.classification-page details').forEach(el=>el.open=true);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));const w=window.open('','_blank','width=1100,height=800');if(!w){alert('Pop-up diblokir. Izinkan pop-up untuk mencetak klasifikasi arsip.');return}const styles=[...document.head.querySelectorAll('link[rel=stylesheet],style')].map(x=>x.outerHTML).join('');const content=document.querySelector('.classification-page')?.cloneNode(true);if(!content)throw new Error('Konten klasifikasi tidak ditemukan.');content.querySelectorAll('button,.btn,.classification-node-actions,.classification-main-action').forEach(x=>x.remove());w.document.open();w.document.write('<!doctype html><html lang="id"><head><meta charset="utf-8"><base href="'+location.href+'"><title>Daftar Klasifikasi Arsip</title>'+styles+'<style>@page{size:A4 portrait;margin:12mm}body{background:#fff!important;color:#111!important}.sidebar,.app-top,.toolbar,#openAddClass,#printClassification{display:none!important}.app-layout,.app-main,.app-content,.classification-page{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;box-shadow:none!important;border:0!important}details:not([open])>*:not(summary){display:block!important}@media print{body{print-color-adjust:exact;-webkit-print-color-adjust:exact}}</style></head><body>'+content.outerHTML+'<script>window.onload=()=>{window.focus();window.print()}<'+'/script></body></html>');w.document.close()}finally{btn.disabled=false}});
+</script>
+<script src="db.js"></script>
+<script>/* Native window.print retained: direct browser print dialog. */</script>
+</body></html>

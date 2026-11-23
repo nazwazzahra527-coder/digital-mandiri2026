@@ -1,0 +1,532 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Detail Surat Masuk | PT Digital Mandiri</title><link rel="stylesheet" href="style.css"><style>
+@media print {
+  @page { size: A4 landscape; margin: 8mm; }
+  body * { visibility: hidden !important; }
+  #lembar-disposisi, #lembar-disposisi * { visibility: visible !important; }
+  #lembar-disposisi .priority-boxes .priority-choice { display:grid !important; visibility:visible !important; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  #lembar-disposisi .priority-boxes .priority-choice.active { background:#c9c9c9 !important; box-shadow:inset 0 0 0 3px #fff !important; }
+  #lembar-disposisi {
+    position: absolute !important; left: 0 !important; top: 0 !important;
+    width: 100% !important; max-width: none !important; margin: 0 !important;
+    box-shadow: none !important; background: white !important;
+    color: #111 !important; break-inside: avoid;
+  }
+  .no-print { display: none !important; }
+  #lembar-disposisi input, #lembar-disposisi textarea, #lembar-disposisi select {
+    color: #111 !important; background: transparent !important;
+    -webkit-appearance: none; appearance: none; border-color: #777 !important;
+  }
+  #lembar-disposisi textarea { resize: none !important; overflow: visible !important; }
+  #lembar-disposisi .signature-image { max-height: 85px; object-fit: contain; }
+}
+.leader-only.hidden{display:none!important}.signature-location-date{display:flex;align-items:center;gap:4px;white-space:nowrap}.signature-location-date input{min-width:0;flex:1;width:100%;border:0;border-bottom:1px solid #777;background:transparent;font:inherit;padding:5px 0}.instruction-select{display:block;width:100%;min-height:42px;padding:8px 10px;border:1px solid #d5dbe5;border-radius:6px;background:#fff;font:inherit;color:#222}.signature-image{max-width:100%;width:190px;height:auto;object-fit:contain;max-height:52px;mix-blend-mode:multiply}.signature-image.hidden{display:none!important}.disp-signature .signature-space{height:68px;min-height:68px;margin-top:8px;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden}.disp-signature .signature-image{display:block;width:180px;max-width:100%;height:64px;max-height:64px;object-fit:contain;mix-blend-mode:multiply}.disp-signature .signature-image.hidden{display:none!important}.disp-signature .signature-name{margin-top:0}.disp-signature .signature-upload-control{position:relative;display:flex;justify-content:center;align-items:center;gap:8px;margin:8px 0 0!important}.signature-delete{min-width:34px}.disp-signature .signature-caption{margin-top:2px}@media print{.signature-upload-control{display:none!important}.disp-signature .signature-space{height:68px;min-height:68px;margin-top:8px}.disp-signature .signature-image{max-height:64px}}
+
+/* Perbaikan cetak disposisi: sembunyikan placeholder penerima yang belum dipilih */
+.disp-forward-row .disp-recipient-print { display:none; }
+@media print {
+  #lembar-disposisi { font-weight:700 !important; }
+  #lembar-disposisi b, #lembar-disposisi strong,
+  #lembar-disposisi label, #lembar-disposisi .disp-forward,
+  #lembar-disposisi .disp-forward-row, #lembar-disposisi .disp-legend,
+  #lembar-disposisi input, #lembar-disposisi textarea,
+  #lembar-disposisi select, #lembar-disposisi .signature-name,
+  #lembar-disposisi .signature-caption {
+    font-weight:700 !important;
+  }
+  #lembar-disposisi .disp-forward-row select.disp-recipient { display:none !important; }
+  #lembar-disposisi .disp-forward-row .disp-recipient-print {
+    display:inline-block !important; font-weight:700 !important;
+    border-bottom:1px dotted #777; min-width:70%; padding:5px 0;
+  }
+}
+
+/* Pratinjau disposisi layar penuh sebelum mencetak */
+#preview-disposisi-overlay{position:fixed;inset:0;z-index:99999;background:#e9edf3;display:none;flex-direction:column}
+#preview-disposisi-overlay.is-open{display:flex}
+#preview-disposisi-toolbar{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:#123b68;color:#fff;box-shadow:0 2px 8px #0002}
+#preview-disposisi-toolbar .preview-actions{display:flex;gap:8px;flex-wrap:wrap}
+#preview-disposisi-toolbar button{border:0;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer}
+#preview-disposisi-toolbar .preview-print{background:#fff;color:#123b68}
+#preview-disposisi-toolbar .preview-close{background:#dce7f5;color:#123b68}
+#preview-disposisi-content{flex:1;overflow:auto;padding:24px;display:flex;justify-content:center;align-items:flex-start}
+#preview-disposisi-content .preview-paper{background:#fff;width:min(1120px,100%);min-height:650px;padding:18px;box-shadow:0 4px 20px #0002;box-sizing:border-box}
+#preview-disposisi-content .preview-paper #lembar-disposisi{width:100%;max-width:none;margin:0;box-shadow:none}
+@media(max-width:700px){#preview-disposisi-toolbar{align-items:flex-start;flex-direction:column}#preview-disposisi-content{padding:8px}#preview-disposisi-content .preview-paper{padding:8px}}
+@media print{#preview-disposisi-overlay{display:none!important}}
+
+/* Dropdown disposisi: rapikan ukuran, posisi, dan keterbacaan pilihan */
+#lembar-disposisi .disp-instruction,
+#lembar-disposisi .disp-forward-row { min-width:0; }
+#lembar-disposisi .instruction-select,
+#lembar-disposisi .disp-recipient {
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  min-height:38px !important;
+  box-sizing:border-box !important;
+  padding:7px 34px 7px 10px !important;
+  margin:4px 0 !important;
+  border:1px solid #b8c5d6 !important;
+  border-radius:6px !important;
+  background-color:#fff !important;
+  color:#1d2939 !important;
+  font:inherit !important;
+  line-height:1.35 !important;
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+}
+#lembar-disposisi .disp-forward-row {
+  display:grid !important;
+  grid-template-columns:28px minmax(0,1fr) !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin:5px 0 !important;
+}
+#lembar-disposisi select:disabled { opacity:1 !important; color:#1d2939 !important; background:#f8fafc !important; }
+@media print {
+  #lembar-disposisi .instruction-select,
+  #lembar-disposisi .disp-recipient { border:0 !important; background:transparent !important; }
+}
+</style><style>
+.disp-forward-row{display:grid;grid-template-columns:28px minmax(0,1fr);align-items:center;gap:8px;margin:7px 0}
+.disp-forward-row>span{font-weight:600}
+.disp-forward-row select{width:100%;min-width:0;padding:5px 8px;border:0;border-bottom:1px dotted #777;background:transparent;font:inherit;color:inherit;outline-offset:2px}
+@media print{.disp-forward-row select{-webkit-appearance:none;appearance:none;border:0;border-bottom:1px dotted #777;padding-left:0}}
+</style>
+<style id="mka-dropdown-final-fix">
+/* Perbaikan final dropdown Diteruskan: lebar mengikuti kolom, tidak meluber, dan tetap mudah dipilih. */
+#lembar-disposisi .disp-forward-row{display:grid!important;grid-template-columns:26px minmax(0,1fr)!important;align-items:center!important;gap:8px!important;width:100%!important;min-width:0!important;box-sizing:border-box!important}
+#lembar-disposisi .disp-forward-row select.disp-recipient{display:block!important;position:relative!important;width:100%!important;max-width:100%!important;min-width:0!important;height:40px!important;min-height:40px!important;box-sizing:border-box!important;padding:6px 34px 6px 10px!important;margin:0!important;border:1px solid #b8c5d6!important;border-radius:7px!important;background:#fff!important;color:#1d2939!important;font-family:inherit!important;font-size:14px!important;line-height:1.25!important;white-space:nowrap!important;text-overflow:ellipsis!important;overflow:hidden!important;appearance:auto!important;-webkit-appearance:menulist!important}
+#lembar-disposisi .disp-forward-row select.disp-recipient:focus{outline:2px solid #8bb7e8!important;outline-offset:1px!important;border-color:#3978b9!important}
+#lembar-disposisi .disp-forward-row select.disp-recipient option{white-space:normal!important;padding:6px!important}
+@media(max-width:520px){#lembar-disposisi .disp-forward-row{grid-template-columns:22px minmax(0,1fr)!important;gap:5px!important}#lembar-disposisi .disp-forward-row select.disp-recipient{font-size:13px!important}}
+@media print{#lembar-disposisi .disp-forward-row select.disp-recipient{display:none!important}}
+</style>
+
+<style id="mka-forward-layout-cleanup">
+/* Susun setiap pilihan Diteruskan dalam satu baris yang konsisten. */
+#lembar-disposisi .disp-forward{display:block!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+#lembar-disposisi .disp-forward-row{display:flex!important;flex-flow:row nowrap!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:42px!important;margin:7px 0!important;padding:0!important;box-sizing:border-box!important}
+#lembar-disposisi .disp-forward-row>span:first-child{display:block!important;flex:0 0 28px!important;width:28px!important;font-weight:700!important;text-align:left!important}
+#lembar-disposisi .disp-forward-row>select.disp-recipient{display:block!important;flex:1 1 0!important;width:calc(100% - 38px)!important;min-width:0!important;max-width:100%!important;height:42px!important;min-height:42px!important;margin:0!important;padding:7px 34px 7px 12px!important;box-sizing:border-box!important;line-height:1.25!important;font-weight:400!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#lembar-disposisi .disp-forward-row select.disp-recipient+*,#lembar-disposisi .disp-forward-row~b{display:none!important}
+@media(max-width:600px){#lembar-disposisi .disp-forward-row{gap:6px!important}#lembar-disposisi .disp-forward-row>span:first-child{flex-basis:22px!important;width:22px!important}}
+</style>
+<style id="mka-disposition-print-clean">
+@media print {
+ @page { size:A4 landscape; margin:7mm; }
+ html,body { margin:0!important; padding:0!important; width:100%!important; height:auto!important; }
+ #lembar-disposisi {
+   width:100%!important; max-width:100%!important; height:182mm!important; min-height:182mm!important;
+   margin:0!important; padding:0!important; box-sizing:border-box!important;
+   display:flex!important; flex-direction:column!important; overflow:hidden!important;
+   border:1.5px solid #172b42!important; box-shadow:none!important;
+   break-inside:avoid!important; page-break-inside:avoid!important;
+ }
+ #lembar-disposisi > .disp-heading { flex:0 0 14%!important; min-height:0!important; height:14%!important; padding:10px 16px!important; border-bottom:1.5px solid #172b42!important; box-sizing:border-box!important; }
+ #lembar-disposisi > .disp-toprow { flex:0 0 13%!important; height:13%!important; min-height:0!important; grid-template-columns:1.1fr 1fr!important; border-bottom:1.5px solid #172b42!important; }
+ #lembar-disposisi > .disp-toprow>div { min-height:0!important; height:100%!important; padding:7px 9px!important; border-right:1px solid #172b42!important; box-sizing:border-box!important; }
+ #lembar-disposisi > .disp-toprow>div:last-child { border-right:0!important; }
+ #lembar-disposisi > .disp-metadata { flex:0 0 17%!important; height:17%!important; min-height:0!important; padding:5px 10px!important; gap:2px!important; border-bottom:1.5px solid #172b42!important; box-sizing:border-box!important; }
+ #lembar-disposisi > .disp-metadata>div { padding:2px 0!important; border-bottom:1px solid #888!important; }
+ #lembar-disposisi > .disp-instruction-sign { flex:1 1 auto!important; min-height:0!important; grid-template-columns:minmax(0,1.65fr) minmax(180px,1fr)!important; border-bottom:1.5px solid #172b42!important; }
+ #lembar-disposisi .disp-instruction { border-right:1px solid #172b42!important; padding:8px!important; }
+ #lembar-disposisi .disp-instruction textarea { min-height:0!important; height:75px!important; resize:none!important; }
+ #lembar-disposisi .disp-signature { padding:8px!important; }
+ #lembar-disposisi .disp-signature .signature-space { height:65px!important; min-height:65px!important; }
+ #lembar-disposisi > .disp-forward { flex:0 0 21%!important; height:21%!important; min-height:0!important; padding:6px 10px!important; border-bottom:1.5px solid #172b42!important; box-sizing:border-box!important; }
+ #lembar-disposisi .disp-forward-row { display:grid!important; grid-template-columns:26px minmax(0,1fr)!important; align-items:center!important; gap:8px!important; height:25%!important; min-height:0!important; margin:2px 0!important; }
+ #lembar-disposisi .disp-forward-row select.disp-recipient { display:block!important; width:100%!important; height:28px!important; min-height:28px!important; padding:3px 7px!important; border:1px solid #b8c5d6!important; border-radius:3px!important; background:#fff!important; color:#111!important; appearance:none!important; -webkit-appearance:none!important; }
+ #lembar-disposisi .disp-forward-row.recipient-empty { display:none!important; }
+ #lembar-disposisi > .disp-legend { flex:0 0 6%!important; height:6%!important; min-height:0!important; display:flex!important; align-items:center!important; justify-content:center!important; padding:3px!important; border:0!important; box-sizing:border-box!important; }
+ /* One clean divider between each section; avoid stacked/double borders. */
+ #lembar-disposisi > .disp-legend { border-top:0!important; }
+ #lembar-disposisi .disp-forward-row, #lembar-disposisi .disp-forward-row * { border-bottom:0!important; }
+ #lembar-disposisi .disp-forward-row select.disp-recipient { border:1px solid #b8c5d6!important; }
+ #lembar-disposisi * { break-inside:avoid!important; page-break-inside:avoid!important; }
+}
+</style></head><body><div class="app-layout"><aside class="sidebar"><div class="side-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PT DIGITAL<small>MANDIRI</small></span></a></div><div class="side-label">Menu Utama</div><a class="side-link " href="dashboard-sekretaris.html"><span class="ico">▦</span>Beranda</a><a class="side-link active" href="surat-masuk.html"><span class="ico">▤</span>Surat Masuk</a><a class="side-link " href="surat-keluar.html"><span class="ico">↗</span>Surat Keluar</a><a class="side-link " href="klasifikasi-arsip.html"><span class="ico">▧</span>Klasifikasi Arsip</a><a class="side-link " href="peminjaman-arsip.html"><span class="ico">⌂</span>Peminjaman Arsip</a><a class="side-link " href="profil-pengguna.html"><span class="ico">♙</span>Profil Pengguna</a><a class="side-link " href="manajemen-pengguna.html"><span class="ico">♧</span>Manajemen Pengguna</a><a class="side-link " href="riwayat-status.html"><span class="ico">◷</span>Riwayat Status</a><a class="side-link" href="pengaturan-panduan.html"><span class="ico">⚙</span>Pengaturan &amp; Panduan</a><div class="side-label">Akun</div><a class="side-link" href="index.html"><span class="ico">↩</span>Kembali ke Beranda</a></aside><main class="app-main"><div class="app-top"><div><strong>PT DIGITAL MANDIRI</strong><div class="small muted">Sistem Informasi Kearsipan</div></div><div class="userchip"><span class="avatar">N</span><span><b>Nazwa Azzahra</b><br><span class="muted">Sekretaris</span></span><a class="btn btn-outline btn-sm" href="index.html">Keluar</a></div></div><div class="app-content"><div class="toolbar"><div><div class="breadcrumbs">Beranda　›　Surat Masuk　›　Detail Surat</div><h2>Detail Surat Masuk &amp; Disposisi</h2><p class="muted small">Lembar disposisi surat masuk.</p></div></div>
+<div class="grid grid-2 disposition-layout"><div class="card no-print" style="display:none"><h3>Informasi Surat</h3><div class="form-grid"><div class="field"><label>Nomor Surat</label><input value="004/IB-130.1/IX/2026"></div><div class="field"><label>Tanggal Surat</label><input value="6 September 2026"></div><div class="field"><label>Dari</label><input value="PT Ibrahim"></div><div class="field"><label>Perihal</label><input value="Pesanan Perangkat Keras & Pendukung IT"></div><div class="field"><label>Kode Arsip (sesuai buku agenda)</label><input type="text" value="130.1" placeholder="Kode arsip sesuai buku agenda, misalnya PPP, MKS, 05/09, 130.2"></div><div class="field full"><label>Isi Ringkas</label><textarea rows="3">PT Ibrahim mengirim surat pesanan perangkat keras dan pendukung IT.</textarea></div></div></div>
+<div class="card"><div class="toolbar"><h3>Lembar Disposisi</h3><span class="pill">Terintegrasi</span></div><div class="disposition-paper" id="lembar-disposisi">
+<div class="disp-heading"><div class="paper-title">LEMBAR DISPOSISI</div><div class="priority-boxes" role="group" aria-label="Prioritas disposisi">
+<button type="button" class="priority-choice" data-priority="P" aria-pressed="false">P</button><button type="button" class="priority-choice active" data-priority="B" aria-pressed="true">B</button><button type="button" class="priority-choice" data-priority="R" aria-pressed="false">R</button>
+</div></div>
+<div class="disp-toprow"><div class="disp-subject"><b>Perihal:</b><input type="text" class="disp-line-input editable-disp disp-subject-input" value="Surat Pesanan Perangkat Keras &amp; Pendukung IT" aria-label="Perihal disposisi" placeholder="Ketik perihal surat"></div><div class="disp-received"><b>Tanggal Penyelesaian:</b><input type="date" class="disp-line-input editable-disp disp-received-input leader-only" aria-label="Tanggal penyelesaian diisi Pemimpin"></div></div>
+<div class="disp-metadata"><div><b>Tanggal Surat:</b><input class="disp-line-input editable-disp" value="6 September 2026" aria-label="Tanggal surat disposisi"></div><div><b>Nomor Surat:</b><input class="disp-line-input editable-disp" value="004/IB-130.1/IX/2026" aria-label="Nomor surat disposisi"></div><div><b>Asal Surat:</b><input class="disp-line-input editable-disp" value="PT Ibrahim" aria-label="Asal surat disposisi"></div><div><b>Lampiran:</b><input class="disp-line-input editable-disp" value="" aria-label="Lampiran disposisi"></div></div>
+<div class="disp-instruction-sign leader-only"><div class="disp-instruction"><b>Instruksi:</b><select class="editable-disp instruction-select" aria-label="Pilih instruksi disposisi"><option value=""></option><option>Segera ditindaklanjuti.</option><option>Segera diproses.</option><option>Mohon dipelajari.</option><option>Mohon dikoordinasikan.</option><option>Mohon ditanggapi.</option><option>Segera Dibayar.</option></select></div><div class="disp-signature"><div class="signature-location-date"><b>Makassar, </b><input type="date" class="signature-date" aria-label="Tanggal tanda tangan"></div><div class="signature-space"><img class="signature-image hidden" src="assets/tanda-tangan-pimpinan.png" alt="Tanda tangan pimpinan"></div><input type="text" class="signature-name" placeholder="Nama pimpinan" value="Mohd Satryawan Aras"><div class="signature-caption">Pimpinan</div><div class="signature-upload-control no-print"><button id="openSignaturePicker" type="button" class="btn btn-light btn-sm" aria-label="Tampilkan tanda tangan" title="Tampilkan tanda tangan">✎</button><button id="clearSignature" type="button" class="btn btn-light btn-sm signature-delete" aria-label="Hapus tanda tangan" title="Hapus tanda tangan">⌫</button></div></div></div>
+<div class="disp-forward leader-only"><b>Diteruskan:</b>
+<div class="disp-forward-row"><span>1.</span><select class="editable-disp disp-recipient" aria-label="Penerima disposisi pertama"><option value="">Pilih nama/jabatan penerima</option><option>Direktur</option><option>Sekretaris</option><option>Administrasi</option><option>Manajer Keuangan</option><option>Manajer Pemasaran</option><option>Manajer Operasional</option><option>Manajer IT</option><option>Manajer SDM &amp; Umum</option></select></div>
+<div class="disp-forward-row"><span>2.</span><select class="editable-disp disp-recipient" aria-label="Penerima disposisi kedua"><option value="">Pilih nama/jabatan penerima</option><option>Direktur</option><option>Sekretaris</option><option>Administrasi</option><option>Manajer Keuangan</option><option>Manajer Pemasaran</option><option>Manajer Operasional</option><option>Manajer IT</option><option>Manajer SDM &amp; Umum</option></select></div>
+<div class="disp-forward-row"><span>3.</span><select class="editable-disp disp-recipient" aria-label="Penerima disposisi ketiga"><option value="">Pilih nama/jabatan penerima</option><option>Direktur</option><option>Sekretaris</option><option>Administrasi</option><option>Manajer Keuangan</option><option>Manajer Pemasaran</option><option>Manajer Operasional</option><option>Manajer IT</option><option>Manajer SDM &amp; Umum</option></select></div>
+<div class="disp-forward-row"><span>4.</span><select class="editable-disp disp-recipient" aria-label="Penerima disposisi keempat"><option value="">Pilih nama/jabatan penerima</option><option>Direktur</option><option>Sekretaris</option><option>Administrasi</option><option>Manajer Keuangan</option><option>Manajer Pemasaran</option><option>Manajer Operasional</option><option>Manajer IT</option><option>Manajer SDM &amp; Umum</option></select></div></div>
+<div class="disp-legend">P = Penting,　 B = Biasa,　 R = Rahasia</div>
+</div><div class="disposition-actions no-print" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button id="printDispositionButton" class="btn btn-light" type="button" onclick="cetakDisposisi()" aria-label="Cetak lembar disposisi" title="Cetak lembar disposisi">🖨 Cetak</button><a id="downloadOriginalLetter" class="btn btn-outline" href="#" download>⬇ Unduh Surat</a><button id="saveDisposition" class="btn btn-primary" type="button">💾 Simpan Disposisi</button><button id="approveDisposition" class="btn btn-success" type="button">✓ ACC</button><button id="sendDispositionNotification" class="btn btn-outline" type="button">✉ Kirim Notifikasi Disposisi</button></div><p class="muted small no-print">Pemimpin dapat melengkapi disposisi lalu menekan Simpan Disposisi Pemimpin. Sekretaris/Admin dapat langsung mencetak lembar disposisi setelah disetujui (ACC). Setelah tersimpan, gunakan Kirim Notifikasi Disposisi untuk memberitahukan Pemimpin. Notifikasi disiapkan berdasarkan surat yang sedang dibuka; pengiriman WhatsApp tetap perlu dikonfirmasi melalui aplikasi WhatsApp.</p></div></div></div></main></div><div id="toast" class="toast"></div><script src="db.js"></script>
+<script>
+document.querySelectorAll('.priority-choice').forEach(function(btn){
+ btn.addEventListener('click',function(){
+  document.querySelectorAll('.priority-choice').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-pressed','false')});
+  btn.classList.add('active');btn.setAttribute('aria-pressed','true');
+ });
+});
+</script>
+
+<script>
+function bukaPratinjauDisposisi(){
+  const lembar=document.getElementById('lembar-disposisi');
+  if(!lembar){alert('Lembar disposisi tidak ditemukan.');return;}
+  let overlay=document.getElementById('preview-disposisi-overlay');
+  if(!overlay){
+    overlay=document.createElement('div');
+    overlay.id='preview-disposisi-overlay';
+    overlay.innerHTML='<div id="preview-disposisi-toolbar"><strong>Pratinjau Lengkap Disposisi</strong><div class="preview-actions"><button type="button" class="preview-close" onclick="tutupPratinjauDisposisi()">Kembali</button><button type="button" class="preview-print" onclick="cetakDariPratinjau()">Cetak Sekarang</button></div></div><div id="preview-disposisi-content"><div class="preview-paper" id="preview-disposisi-paper"></div></div>';
+    document.body.appendChild(overlay);
+  }
+  const paper=overlay.querySelector('#preview-disposisi-paper');
+  paper.innerHTML='';
+  const copy=lembar.cloneNode(true);
+  copy.removeAttribute('id');
+  copy.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+  // Sinkronkan nilai kontrol agar preview menampilkan isian terkini.
+  const originals=lembar.querySelectorAll('input,textarea,select');
+  const copies=copy.querySelectorAll('input,textarea,select');
+  originals.forEach((el,i)=>{
+    const c=copies[i]; if(!c)return;
+    if(el.tagName==='SELECT'){c.value=el.value; Array.from(c.options).forEach((o,j)=>o.selected=el.options[j]&&el.options[j].selected);}
+    else if(el.type==='checkbox'||el.type==='radio'){c.checked=el.checked;}
+    else if(el.tagName==='TEXTAREA'){c.textContent=el.value;}
+    else{c.setAttribute('value',el.value);}
+  });
+  paper.appendChild(copy);
+  overlay.classList.add('is-open');
+  document.body.style.overflow='hidden';
+}
+function tutupPratinjauDisposisi(){
+  const overlay=document.getElementById('preview-disposisi-overlay');
+  if(overlay)overlay.classList.remove('is-open');
+  document.body.style.overflow='';
+}
+function cetakDariPratinjau(){
+  const source=document.getElementById('lembar-disposisi');
+  if(!source){alert('Lembar disposisi tidak ditemukan.');return;}
+  const copy=source.cloneNode(true);
+  copy.removeAttribute('id');
+  copy.classList.add('print-disposition');
+
+  // Ganti semua kontrol dengan teks dari FORM ASLI.
+  // cloneNode(true) tidak selalu membawa selectedness/value kontrol form,
+  // sehingga membaca nilai dari elemen hasil clone dapat menghasilkan teks kosong.
+  const sourceControls=Array.from(source.querySelectorAll('input, textarea, select'));
+  const clonedControls=Array.from(copy.querySelectorAll('input, textarea, select'));
+  clonedControls.forEach(function(el,index){
+    const original=sourceControls[index] || el;
+    let value='';
+    if(original.tagName==='SELECT'){
+      value=(original.selectedIndex>=0 ? (original.options[original.selectedIndex].textContent||'').trim() : '');
+      if(!String(original.value||'').trim() || /pilih nama\/jabatan penerima/i.test(value)){
+        const row=el.closest('.disp-forward-row');
+        if(row){row.remove();return;}
+        value='';
+      }
+    } else if(original.tagName==='TEXTAREA') {
+      value=original.value||'';
+    } else {
+      value=original.value||'';
+      if(original.type==='date' && value){
+        const p=value.split('-'); if(p.length===3) value=p[2]+'/'+p[1]+'/'+p[0];
+      }
+    }
+    const span=document.createElement('span');
+    span.className='print-field '+(el.className||'').replace(/\beditable-disp\b/g,'');
+    span.textContent=value;
+    if(el.classList.contains('disp-subject-input')) span.classList.add('print-subject');
+    if(el.classList.contains('signature-name')) span.classList.add('print-signature-name');
+    if(el.classList.contains('signature-date')) span.classList.add('print-signature-date');
+    el.replaceWith(span);
+  });
+
+  // Hapus kontrol tanda tangan dan elemen antarmuka, tetapi pertahankan gambar tanda tangan.
+  copy.querySelectorAll('.signature-upload-control,.no-print').forEach(el=>el.remove());
+  copy.querySelectorAll('.priority-choice').forEach(function(btn){
+    const span=document.createElement('span');
+    span.className='print-priority '+(btn.classList.contains('active')?'active':'');
+    span.textContent=btn.textContent.trim();
+    btn.replaceWith(span);
+  });
+
+  const w=window.open('','_blank','width=1100,height=800');
+  if(!w){alert('Pop-up diblokir. Izinkan pop-up untuk mencetak lembar disposisi.');return;}
+  const style=`
+  <style>
+   @page{size:A4 landscape;margin:7mm}
+   *{box-sizing:border-box}
+   html,body{margin:0;padding:0;background:#fff;color:#111;font-family:Georgia,'Times New Roman',serif}
+   .print-disposition{width:100%;height:195mm;border:1.4px solid #172b42;display:grid;
+     grid-template-rows:14% 13% 17% 30% 20% 6%;overflow:hidden;font-size:11pt;line-height:1.2}
+   .disp-heading{position:relative;display:flex;align-items:center;justify-content:center;padding:4mm;border-bottom:1px solid #172b42;min-height:0}
+   .paper-title{font-size:16pt;font-weight:bold;text-align:center;margin:0}
+   .priority-boxes{position:absolute;right:3mm;top:2mm;display:flex;gap:1mm}
+   .print-priority{width:8mm;height:8mm;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-weight:bold}
+   .print-priority.active{background:#d6d6d6}
+   .disp-toprow{display:grid;grid-template-columns:1.1fr 1fr;border-bottom:1px solid #172b42;min-height:0}
+   .disp-toprow>div{padding:3mm;border-right:1px solid #172b42;min-width:0;display:flex;flex-direction:column;gap:5mm}
+   .disp-toprow>div:last-child{border-right:0}
+   .disp-toprow b,.disp-metadata b,.disp-instruction b,.disp-forward>b{font-weight:bold}
+   .print-field{display:block;min-width:0;overflow-wrap:anywhere;white-space:pre-wrap}
+   .disp-toprow .print-field{border-bottom:1px solid #777;padding:0 0 2mm;min-height:7mm;font-weight:bold}
+   .disp-metadata{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(4,1fr);padding:2mm 3mm;border-bottom:1px solid #172b42;min-height:0}
+   .disp-metadata>div{display:grid;grid-template-columns:35mm minmax(0,1fr);align-items:center;gap:2mm;border-bottom:1px solid #888;min-height:0;padding:1mm 0}
+   .disp-metadata>div:last-child{border-bottom:0}
+   .disp-metadata .print-field{border-bottom:1px solid #777;min-height:6mm;padding:0 1mm;font-weight:bold}
+   .disp-instruction-sign{display:grid;grid-template-columns:1.65fr 1fr;border-bottom:1px solid #172b42;min-height:0}
+   .disp-instruction{padding:3mm;border-right:1px solid #172b42;min-width:0}
+   .disp-instruction .print-field{margin-top:4mm;padding-left:2mm;font-weight:bold}
+   .disp-signature{padding:3mm;display:flex;flex-direction:column;min-width:0}
+   .signature-location-date{display:flex;align-items:center;gap:2mm;white-space:nowrap}
+   .signature-location-date .print-field{flex:1;border-bottom:1px solid #777;padding:0 1mm 1mm;font-weight:bold}
+   .signature-space{height:22mm;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:2mm}
+   .signature-image{display:block;max-width:70mm;max-height:21mm;object-fit:contain}
+   .signature-name{border-bottom:1px solid #777;text-align:center;padding:1mm;font-weight:bold}
+   .signature-caption{text-align:center;font-weight:bold;margin-top:1mm;font-size:9pt}
+   .disp-forward{padding:2mm 3mm;border-bottom:1px solid #172b42;min-height:0;overflow:hidden}
+   .disp-forward>b{display:block;margin-bottom:1mm}
+   .disp-forward-row{display:grid;grid-template-columns:8mm minmax(0,1fr);gap:2mm;align-items:center;min-height:9mm;margin:0}
+   .disp-forward-row>span:first-child{font-weight:bold}
+   .disp-forward-row .print-field{border:1px solid #b8c5d6;border-radius:1mm;min-height:7mm;padding:1.5mm 2mm;font-weight:bold}
+   .disp-legend{display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;min-height:0;padding:1mm}
+   @media print{body{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+  </style>`;
+  w.document.open();
+  w.document.write('<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Cetak Lembar Disposisi</title>'+style+'</head><body>'+copy.outerHTML+'</body></html>');
+  w.document.close();
+  w.focus();
+  w.onload=function(){w.focus();setTimeout(function(){w.print();},250);};
+}
+function cetakDisposisi(){
+  const button=document.getElementById('printDispositionButton');
+  if(button){button.textContent='🖨 Cetak';button.setAttribute('aria-label','Cetak lembar disposisi');}
+  cetakDariPratinjau();
+}
+document.addEventListener('DOMContentLoaded',function(){
+  const button=document.getElementById('printDispositionButton');
+  if(button){button.textContent='🖨 Cetak';button.setAttribute('aria-label','Cetak lembar disposisi');button.title='Cetak lembar disposisi';}
+});
+</script>
+
+
+<script>
+(function(){
+ // Sesuaikan identitas dan tautan Beranda berdasarkan peran login tanpa mengubah format sidebar.
+ let u={}; try{u=JSON.parse(localStorage.getItem('pdm_user')||'{}')}catch(e){}
+ const role=String(u.role||'sekretaris').toLowerCase();
+ const meta={admin:{name:u.name||'Admin',label:'Admin',home:'dashboard-admin.html',initial:'A'},sekretaris:{name:u.name||'Nazwa Azzahra',label:'Sekretaris',home:'dashboard-sekretaris.html',initial:'N'},pemimpin:{name:u.name||'Mohd Satryawan Aras',label:'Pimpinan',home:'dashboard-pemimpin.html',initial:'P'}}[role]||{name:'Nazwa Azzahra',label:'Sekretaris',home:'dashboard-sekretaris.html',initial:'N'};
+ const home=document.querySelector('.sidebar .side-link'); if(home){home.href=meta.home;home.innerHTML='<span class="ico">▦</span>Beranda';}
+ const chip=document.querySelector('.app-top .userchip');
+ if(chip){const avatar=chip.querySelector('.avatar');if(avatar)avatar.textContent=meta.initial;const b=chip.querySelector('b');if(b)b.textContent=meta.name;const muted=chip.querySelector('.muted');if(muted)muted.textContent=meta.label;}
+})();
+</script>
+<script>
+(function(){
+ const pencil=document.getElementById('openSignaturePicker');
+ const clear=document.getElementById('clearSignature');
+ const image=document.querySelector('.signature-image');
+ const control=document.querySelector('.signature-upload-control');
+ let user={};
+ try{user=JSON.parse(localStorage.getItem('pdm_user')||'{}')}catch(e){}
+ const role=String(user.role||user.jabatan||'').toLowerCase();
+ const isLeader=role.includes('pemimpin') || role.includes('pimpinan');
+ // Format instruksi, tanda tangan, dan diteruskan tetap terlihat untuk semua peran.
+ // Hanya Pemimpin yang boleh mengubah bagian tersebut atau menggunakan kontrol tanda tangan.
+ if(!isLeader){
+   document.querySelectorAll('.leader-only input, .leader-only select, .leader-only textarea').forEach(function(el){
+     el.disabled=true;
+     el.setAttribute('aria-disabled','true');
+   });
+   if(control)control.classList.add('hidden');
+ }
+ if(!pencil||!image)return;
+ if(clear)clear.addEventListener('click',function(){
+   if(!isLeader){return;}
+   image.classList.add('hidden');
+ });
+ pencil.addEventListener('click',function(){
+   if(!isLeader){return;}
+   image.src='assets/tanda-tangan-pimpinan.png';
+   image.classList.remove('hidden');
+ });
+})();
+</script>
+
+<script>
+(function(){
+  function updateRecipientPrint(){
+    document.querySelectorAll('#lembar-disposisi .disp-forward-row').forEach(function(row){
+      var sel=row.querySelector('select.disp-recipient');
+      if(!sel) return;
+      var text=sel.options && sel.selectedIndex>=0 ? (sel.options[sel.selectedIndex].textContent||'').trim() : '';
+      var empty=!String(sel.value||'').trim() || /pilih nama\/jabatan penerima/i.test(text);
+      row.classList.toggle('recipient-empty',empty);
+      row.dataset.printValue=empty?'':text;
+    });
+  }
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.matches('#lembar-disposisi select.disp-recipient')) updateRecipientPrint();
+  });
+  window.addEventListener('beforeprint', updateRecipientPrint);
+  document.addEventListener('DOMContentLoaded', updateRecipientPrint);
+  updateRecipientPrint();
+})();
+</script>
+
+<script>
+(function(){
+  const params=new URLSearchParams(location.search);
+  const mailId=params.get('id');
+  const user=(()=>{try{return JSON.parse(localStorage.getItem('pdm_user')||'{}')}catch(e){return {}}})();
+  const role=String(user.role||user.jabatan||'').toLowerCase();
+  const isLeader=role.includes('pemimpin')||role.includes('pimpinan');
+  const actor=user.name||user.full_name||'Mohd Satryawan Aras';
+  const $=s=>document.querySelector(s);
+  const paper=$('#lembar-disposisi');
+  const save=$('#saveDisposition'), approve=$('#approveDisposition');
+  const dateField=$('.disp-received-input');
+  const instruction=$('.instruction-select');
+  const recipients=[...document.querySelectorAll('.disp-recipient')];
+  const priority=()=>document.querySelector('.priority-choice.active')?.dataset?.priority ||
+      document.querySelector('.priority-choice.active')?.textContent?.trim()?.[0] || 'B';
+  const notify=(msg)=>{const t=$('#toast');if(t){t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}else alert(msg)};
+  async function api(url,opts){const r=await fetch(url,opts||{});let d={};try{d=await r.json()}catch(e){}if(!r.ok)throw new Error(d.error||'Permintaan gagal');return d;}
+  function payload(){
+    return {
+      mail_id:mailId,
+      completion_date:dateField?.value||'',
+      priority:priority(),
+      instruction:instruction?.value||'',
+      recipients:recipients.map(x=>x.value).filter(Boolean),
+      recipient1:recipients[0]?.value||'',recipient2:recipients[1]?.value||'',
+      recipient3:recipients[2]?.value||'',recipient4:recipients[3]?.value||'',
+      subject:$('.disp-subject-input')?.value||'',
+      number:$('.disp-metadata input[aria-label="Nomor surat disposisi"]')?.value||'',
+      letter_date:$('.disp-metadata input[aria-label="Tanggal surat disposisi"]')?.value||'',
+      party:$('.disp-metadata input[aria-label="Asal surat disposisi"]')?.value||'',
+      attachment:$('.disp-metadata input[aria-label="Lampiran disposisi"]')?.value||'',
+      signer_name:$('.signature-name')?.value||actor,
+      signature_date:$('.signature-date')?.value||'',
+      actor:actor
+    };
+  }
+  async function loadExisting(){
+    if(!mailId)return;
+    try{
+      const d=await api('/api/dispositions?mail_id='+encodeURIComponent(mailId));
+      if(d){
+        // Muat kembali seluruh data disposisi yang sudah disimpan/di-ACC.
+        if(dateField)dateField.value=d.completion_date||'';
+        const setInput=(selector,value)=>{const el=$(selector);if(el && value!==undefined && value!==null)el.value=String(value==='-'?'':value)};
+        setInput('.disp-subject-input',d.subject);
+        setInput('.disp-metadata input[aria-label="Tanggal surat disposisi"]',d.letter_date);
+        setInput('.disp-metadata input[aria-label="Nomor surat disposisi"]',d.number);
+        setInput('.disp-metadata input[aria-label="Asal surat disposisi"]',d.party);
+        setInput('.disp-metadata input[aria-label="Lampiran disposisi"]',d.attachment);
+        if(instruction){
+          const savedInstruction=String(d.instruction||'').trim();
+          if(savedInstruction && ![...instruction.options].some(o=>o.value===savedInstruction)){
+            instruction.add(new Option(savedInstruction,savedInstruction));
+          }
+          instruction.value=savedInstruction;
+        }
+        if(d.signature_date) $('.signature-date').value=d.signature_date;
+        if(d.signer_name) $('.signature-name').value=d.signer_name;
+        if(d.priority){document.querySelectorAll('.priority-choice').forEach(b=>{const v=(b.dataset.priority||b.textContent.trim()[0]||'').toUpperCase();b.classList.toggle('active',v===d.priority);b.setAttribute('aria-pressed',v===d.priority?'true':'false')})}
+        recipients.forEach((el,i)=>{
+          const v=String(d['recipient'+(i+1)]||(Array.isArray(d.recipients)?d.recipients[i]:'')||'').trim();
+          if(v && ![...el.options].some(o=>o.value===v)) el.add(new Option(v,v));
+          el.value=v;
+        });
+        // Bagian ini merupakan hasil disposisi, sehingga tetap tampil untuk Admin/Sekretaris.
+        document.querySelector('.disp-instruction-sign')?.classList.remove('hidden');
+        document.querySelector('.disp-forward')?.classList.remove('hidden');
+        document.querySelectorAll('.disp-forward-row').forEach(row=>row.classList.remove('recipient-empty'));
+        if(d.approval_status==='Disetujui'){
+          if(approve){approve.textContent='✓ Disetujui';approve.disabled=true;}
+          if(save)save.disabled=true;
+          if($('.signature-image')) $('.signature-image').classList.remove('hidden');
+        }
+        document.dispatchEvent(new Event('change',{bubbles:true}));
+      }
+    }catch(e){console.warn('Belum ada disposisi tersimpan:',e.message)}
+  }
+  if(save){
+    if(!isLeader) save.textContent='Simpan & Teruskan ke Pemimpin';
+    save.addEventListener('click',async()=>{
+      if(!mailId){notify('ID surat tidak ditemukan.');return}
+      try{const saved=await api('/api/dispositions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload())});
+        if(!isLeader){
+          notify('Surat tersimpan. Notifikasi website Pemimpin diperbarui; WhatsApp dibuka dengan pesan siap dikirim.');
+          const phone=(localStorage.getItem('pdm_leader_whatsapp')||'').replace(/\\D/g,'');
+          const pdfLink=location.origin+'/api/mails/'+encodeURIComponent(mailId)+'/pdf';
+          const appLink=location.origin+'/dashboard-pemimpin.html';
+          const msg=`Yth. Bapak/Ibu Pemimpin PT Digital Mandiri,\\n\\nAda surat masuk yang memerlukan pemeriksaan dan persetujuan.\\nNomor Surat: ${payload().number}\\nPerihal: ${payload().subject}\\nPengirim: ${payload().party}\\n\\nLink surat: ${pdfLink}\\nLink aplikasi: ${appLink}\\n\\nMohon tinjau dan berikan instruksi disposisi melalui aplikasi.`;
+          if(phone.length>=10) window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank','noopener');
+          else notify('Disposisi tersimpan. Atur nomor WhatsApp Pemimpin untuk membuka notifikasi WhatsApp.');
+        } else notify('Disposisi Pemimpin berhasil disimpan ke database.');}
+      catch(e){notify('Gagal menyimpan disposisi: '+e.message)}
+    });
+  }
+  if(approve){
+    if(!isLeader)approve.remove();
+    else approve.addEventListener('click',async()=>{
+      if(!mailId){notify('ID surat tidak ditemukan.');return}
+      try{
+        // Simpan dahulu agar tanggal penyelesaian, instruksi, dan penerima masuk database.
+        const saved=await api('/api/dispositions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload())});
+        await api('/api/dispositions/'+encodeURIComponent(saved.id)+'/approve',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({approved_by:actor})});
+        approve.textContent='✓ Disetujui';approve.disabled=true;if(save)save.disabled=true;
+        notify('Disposisi berhasil di-ACC.');
+      }catch(e){notify('ACC gagal: '+e.message)}
+    });
+  }
+  const download=$('#downloadOriginalLetter');
+  if(download&&mailId){
+    api('/api/mails').then(rows=>{
+      const rec=(Array.isArray(rows)?rows:[]).find(x=>String(x.id)===String(mailId));
+      const file=rec&&(rec.attachment||rec.pdf||rec.attachment_path);
+      if(file){download.href='/'+String(file).replace(/^\/+/,'');download.setAttribute('download','');}
+      else {download.classList.add('disabled');download.setAttribute('aria-disabled','true');download.title='File surat asli belum dilampirkan';download.addEventListener('click',e=>{e.preventDefault();notify('File surat asli belum tersedia untuk diunduh.')})}
+    }).catch(()=>{download.classList.add('disabled');download.title='File surat tidak dapat ditemukan'});
+  }
+  if(!isLeader){
+    // Admin/Sekretaris harus tetap dapat menyimpan dan meneruskan disposisi ke Pemimpin.
+    if(save){save.classList.remove('hidden');save.hidden=false;save.disabled=false;save.textContent='💾 Simpan & Teruskan ke Pemimpin';}
+    if(dateField){dateField.disabled=true;dateField.setAttribute('aria-disabled','true')}
+  }
+  loadExisting();
+})();
+</script>
+
+<script>
+/* Kontrol akses tombol Cetak disposisi berdasarkan status ACC */
+(function(){
+  const btn=document.getElementById('printDispositionButton');
+  if(!btn)return;
+  btn.hidden=true;
+  let u={};
+  try{u=JSON.parse(localStorage.getItem('pdm_user')||'{}')}catch(e){}
+  const role=String(u.role||u.jabatan||u.user_role||'').toLowerCase();
+  const allowed=role.includes('admin')||role.includes('sekretaris');
+  const id=new URLSearchParams(location.search).get('id');
+  if(!allowed||!id)return;
+  fetch('/api/dispositions?mail_id='+encodeURIComponent(id))
+    .then(r=>r.ok?r.json():null)
+    .then(d=>{
+      if(d && d.approval_status==='Disetujui'){
+        btn.hidden=false;
+        btn.disabled=false;
+        btn.title='Cetak lembar disposisi yang telah di-ACC Pemimpin';
+      } else {
+        btn.hidden=true;
+      }
+    }).catch(()=>{btn.hidden=true});
+})();
+</script>
+</body></html>

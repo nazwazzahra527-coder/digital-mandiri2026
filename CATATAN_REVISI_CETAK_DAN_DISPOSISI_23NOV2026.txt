@@ -1,0 +1,23 @@
+REVISI 23 NOVEMBER 2026
+
+1. Klasifikasi Arsip
+- Tombol Cetak Daftar membuka dialog cetak browser secara langsung dari dokumen cetak terpisah.
+- Tidak menggunakan overlay/pratinjau buatan aplikasi.
+
+2. Peminjaman Arsip
+- Cetak Seluruh Peminjaman membuka dialog cetak browser secara langsung.
+- Cetak bukti peminjaman per baris tetap menggunakan dokumen cetak terpisah dan dialog cetak browser.
+
+3. Disposisi Admin/Sekretaris ke Pemimpin
+- Tombol Simpan & Teruskan ke Pemimpin dipertahankan dan tidak dihapus dari halaman Admin/Sekretaris.
+- Penyimpanan menggunakan endpoint database disposisi yang sudah ada.
+- Dashboard Pemimpin menampilkan panel notifikasi website untuk disposisi yang masuk dan memperbarui daftar secara berkala.
+- WhatsApp dibuka dengan teks notifikasi, tautan PDF melalui endpoint surat, dan tautan dashboard Pemimpin.
+
+CATATAN WHATSAPP
+Tautan wa.me hanya menyiapkan pesan pada aplikasi WhatsApp. Pengguna masih harus menekan tombol Kirim. Pengiriman otomatis tanpa tindakan pengguna membutuhkan integrasi WhatsApp Business Platform/API resmi beserta token dan nomor bisnis yang dikonfigurasi.
+
+CATATAN CETAK
+Browser tetap menampilkan dialog cetak sistem (yang dapat memiliki pratinjau bawaan browser). Yang dihilangkan adalah halaman pratinjau khusus buatan aplikasi sebelum dialog cetak.
+
+Database dan folder unggahan dari ZIP sumber dipertahankan.

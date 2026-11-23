@@ -1,0 +1,19 @@
+PANDUAN PERSIAPAN HOSTING GRATIS — PT DIGITAL MANDIRI
+
+Paket ini sudah disiapkan agar dapat dijalankan pada layanan hosting Python yang menyediakan aplikasi Flask dan penyimpanan file persisten (contoh: PythonAnywhere). Folder data/ dan uploads/ harus tetap berada di dalam folder aplikasi agar SQLite dan PDF tidak hilang saat aplikasi dimulai ulang.
+
+PENTING SEBELUM DIPUBLIKASIKAN
+1. Aplikasi versi ini masih menggunakan simulasi login di sisi browser. API belum dilindungi autentikasi server-side dan belum memiliki pembatasan hak akses yang aman. Karena itu, JANGAN publikasikan data perusahaan/asli atau gunakan sebagai sistem arsip publik sebelum autentikasi server, otorisasi per peran, perlindungan CSRF, HTTPS, dan backup diuji serta diterapkan.
+2. ZIP ini mempertahankan database dan dokumen yang ada. Periksa dan ganti/hapus data sensitif atau dokumen internal sebelum mengunggah ke hosting. Jangan mengunggah ZIP ini ke repositori publik.
+3. Hosting gratis dapat mengubah batas kapasitas, kebijakan, dan ketersediaan sewaktu-waktu. Buat backup rutin database data/digital_mandiri.db serta folder uploads/.
+
+LANGKAH UMUM PYTHONANYWHERE
+1. Buat akun gratis PythonAnywhere dan buat aplikasi web Python/Flask melalui tab Web.
+2. Unggah ZIP ini ke akun sendiri, ekstrak ke /home/USERNAME/aplikasi_mka (ganti USERNAME dengan username akun).
+3. Buat virtualenv sesuai versi Python yang tersedia, lalu instal dependensi dari requirements.txt.
+4. Pada konfigurasi WSGI, gunakan isi pythonanywhere_wsgi.py.example dan ganti NAMA_PENGGUNA.
+5. Pastikan folder data/ dan uploads/ dapat ditulis oleh akun aplikasi.
+6. Reload aplikasi dari tab Web. Alamat subdomain gratis akan diberikan oleh layanan hosting.
+
+CATATAN
+Paket ini merupakan paket sumber siap konfigurasi, bukan situs yang sudah online. Pembuatan akun, persetujuan layanan, dan aktivasi subdomain harus dilakukan dari akun milik pengguna. Jangan pernah mengirimkan kata sandi kepada pihak lain.

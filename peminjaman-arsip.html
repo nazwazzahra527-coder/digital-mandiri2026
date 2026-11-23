@@ -1,0 +1,32 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Peminjaman Arsip | PT Digital Mandiri</title><link rel="stylesheet" href="style.css"><style>
+/* Pratinjau layar penuh untuk seluruh halaman yang memanggil window.print() */
+#print-preview-overlay{position:fixed;inset:0;z-index:100000;background:#e8edf3;display:none;flex-direction:column}
+#print-preview-overlay.is-open{display:flex}
+#print-preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:#123b68;color:#fff}
+#print-preview-toolbar .actions{display:flex;gap:8px;flex-wrap:wrap}
+#print-preview-toolbar button{border:0;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer}
+#print-preview-toolbar .do-print{background:#fff;color:#123b68}
+#print-preview-toolbar .go-back{background:#dce7f5;color:#123b68}
+#print-preview-scroll{flex:1;overflow:auto;padding:22px;display:flex;justify-content:center;align-items:flex-start}
+#print-preview-paper{background:#fff;width:min(1180px,100%);min-height:700px;padding:24px;box-shadow:0 4px 20px #0002;box-sizing:border-box}
+#print-preview-paper .sidebar,#print-preview-paper .app-top,#print-preview-paper .no-print,
+#print-preview-paper button,#print-preview-paper .toolbar .btn{display:none!important}
+#print-preview-paper .app-content{padding:0!important;margin:0!important}
+@media(max-width:700px){#print-preview-toolbar{align-items:flex-start;flex-direction:column}#print-preview-scroll{padding:8px}#print-preview-paper{padding:10px}}
+@media print{#print-preview-overlay{display:none!important}}
+</style></head><body class="loan-page"><div class="app-layout"><aside class="sidebar"><div class="side-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PT DIGITAL<small>MANDIRI</small></span></a></div><div class="side-label">Menu Utama</div><a class="side-link " href="dashboard-sekretaris.html"><span class="ico">▦</span>Beranda</a><a class="side-link " href="surat-masuk.html"><span class="ico">▤</span>Surat Masuk</a><a class="side-link " href="surat-keluar.html"><span class="ico">↗</span>Surat Keluar</a><a class="side-link " href="klasifikasi-arsip.html"><span class="ico">▧</span>Klasifikasi Arsip</a><a class="side-link active" href="peminjaman-arsip.html"><span class="ico">⌂</span>Peminjaman Arsip</a><a class="side-link " href="profil-pengguna.html"><span class="ico">♙</span>Profil Pengguna</a><a class="side-link " href="manajemen-pengguna.html"><span class="ico">♧</span>Manajemen Pengguna</a><a class="side-link " href="riwayat-status.html"><span class="ico">◷</span>Riwayat Status</a><a class="side-link" href="pengaturan-panduan.html"><span class="ico">⚙</span>Pengaturan &amp; Panduan</a><div class="side-label">Akun</div><a class="side-link" href="index.html"><span class="ico">↩</span>Kembali ke Beranda</a></aside><main class="app-main"><div class="app-top"><div><strong>PT DIGITAL MANDIRI</strong><div class="small muted">Sistem Informasi Kearsipan</div></div><div class="userchip"><span class="avatar">N</span><span><b>Nazwa Azzahra</b><br><span class="muted">Sekretaris</span></span><a class="btn btn-outline btn-sm" href="index.html">Keluar</a></div></div><div class="app-content"><div class="toolbar"><div><div class="breadcrumbs">Beranda　›　Peminjaman Arsip</div><h2>Peminjaman Arsip</h2><p class="muted small">Catat permohonan, peminjam, tanggal pinjam, dan pengembalian arsip.</p></div><div class="toolbar-actions"><button class="btn btn-light" id="printAllLoans" type="button">▣ Cetak Seluruh Peminjaman</button><button class="btn" id="openLoanModal" type="button">＋ Ajukan Peminjaman</button></div></div><div class="filters"><input id="tableSearch" placeholder="Cari data..."><select class="filter-select"><option value="">Semua status</option><option>Menunggu persetujuan</option><option>Disetujui</option><option>Ditolak</option><option>Dipinjam</option><option>Dikembalikan</option></select><button class="btn btn-light demo-action" data-message="Filter diterapkan.">Filter</button></div><div class="table-wrap"><table><thead><tr><th>No</th><th>Kode Arsip</th><th>Nama Arsip</th><th>Peminjam</th><th>Tanggal Pinjam</th><th>Batas Kembali</th><th>Keperluan</th><th>Status</th><th>Aksi</th></tr></thead><tbody><tr><td colspan="8" class="empty-note">Memuat data peminjaman...</td></tr></tbody></table></div></div></main></div><div class="modal-backdrop" id="loanModal"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="loanModalTitle">
+<div class="modal-head"><h2 id="loanModalTitle">Ajukan Peminjaman Arsip</h2><button type="button" class="btn close-modal">✕</button></div>
+<form id="loanForm"><div class="form-grid">
+<label class="field full"><span>Pilih Surat / Arsip dari Buku Agenda</span><select name="mail_id" id="loanMailSelect" required><option value="">Pilih nomor surat atau arsip...</option></select><small class="muted">Data surat dan kode arsip akan terisi otomatis dari Buku Agenda.</small></label>
+<label class="field"><span>Nomor Surat</span><input id="loanLetterNumber" readonly placeholder="Otomatis dari Buku Agenda"></label>
+<label class="field"><span>Kode Arsip</span><input id="loanArchiveCode" readonly placeholder="Otomatis"></label>
+<label class="field full"><span>Nama / Perihal Arsip</span><input id="loanArchiveName" readonly placeholder="Otomatis dari Buku Agenda"></label>
+<label class="field"><span>Nama Peminjam</span><input name="borrower" required placeholder="Nama lengkap peminjam"></label>
+<label class="field"><span>Jabatan / Bagian</span><input name="department" placeholder="Jabatan atau bagian"></label>
+<label class="field"><span>Tanggal Pinjam</span><input name="loan_date" type="date" required></label>
+<label class="field"><span>Rencana Pengembalian</span><input name="due_date" type="date" required></label>
+<label class="field full"><span>Keperluan Peminjaman</span><textarea name="notes" rows="3" required placeholder="Jelaskan tujuan peminjaman arsip"></textarea></label>
+</div><div class="modal-actions"><button type="button" class="btn btn-light close-modal">Batal</button><button type="submit" class="btn">Kirim Pengajuan</button></div></form>
+</section></div><div id="toast" class="toast"></div><script src="db.js"></script>
+<script>/* Native window.print retained: direct browser print dialog. */</script>
+</body></html>

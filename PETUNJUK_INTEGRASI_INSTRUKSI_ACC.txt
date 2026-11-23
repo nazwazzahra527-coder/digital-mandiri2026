@@ -1,0 +1,11 @@
+PETUNJUK PEMAKAIAN REVISI - INTEGRASI INSTRUKSI DAN ACC
+
+1. Instruksi yang dipilih Pemimpin pada lembar disposisi disimpan ke database melalui tombol Simpan Disposisi Pemimpin.
+2. Instruksi yang tersimpan dimuat kembali dari database dan ditampilkan pada halaman disposisi untuk Admin dan Sekretaris (mode baca).
+3. Pemimpin dapat melakukan ACC & Tanda Tangani dari halaman detail disposisi atau dashboard persetujuan.
+4. Setelah status Disetujui tersimpan, tombol pratinjau/cetak tersedia untuk Admin dan Sekretaris.
+5. Pilihan prioritas P/B/R tetap ditampilkan; pilihan aktif diberi arsiran pada hasil cetak.
+6. Database dan lampiran dalam ZIP ini berasal dari ZIP asli yang menjadi sumber paket lengkap. Jika server PythonAnywhere memiliki data yang lebih baru, backup database server terlebih dahulu dan pertahankan database server tersebut saat mengganti kode.
+7. Uji alur dengan satu data percobaan: Sekretaris/Admin simpan disposisi -> Pemimpin isi Instruksi -> Simpan Disposisi Pemimpin -> ACC & Tanda Tangani -> Admin/Sekretaris buka ulang -> Pratinjau & Cetak.
+
+Catatan: Pengiriman notifikasi WhatsApp tetap memerlukan konfirmasi melalui aplikasi WhatsApp; paket ini tidak mengaktifkan pengiriman otomatis melalui API WhatsApp.

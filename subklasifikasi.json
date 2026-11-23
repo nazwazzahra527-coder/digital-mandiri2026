@@ -1,0 +1,111 @@
+{
+  "100": [
+    "110 Perkenalan",
+    "110.1 Profil Perusahaan",
+    "120 Permintaan Penawaran",
+    "120.1 Permintaan Katalog",
+    "120.2 Daftar Harga",
+    "120.3 Sampel Produk",
+    "130 Penawaran",
+    "130.1 Penawaran Produk/Jasa",
+    "130.2 Penawaran Balasan",
+    "130.3 Penawaran Kerjasama",
+    "130.4 Konfirmasi Penawaran",
+    "140 Pesanan",
+    "140.1 Pemesanan Barang/Jasa",
+    "140.2 Konfirmasi Penawaran",
+    "140.3 Perubahan/Pembatalan",
+    "140.4 Penolakan Pesanan",
+    "150 Pengiriman",
+    "150.1 Penerimaan Barang",
+    "160 Tagihan",
+    "170 Klaim",
+    "180 Kontrak Kerja Sama/Perjanjian",
+    "190 Kwitansi",
+    "191 Riset & Analisis Pasar",
+    "191.1 Laporan Survey Konsumen",
+    "191.2 Analisis Kompetitor",
+    "192 Promosi & Periklanan",
+    "192.1 Kontrak Iklan Media",
+    "192.2 Desain Materi Promosi",
+    "193 Layanan Pelanggan (CS)",
+    "193.1 Laporan Keluhan Pelanggan",
+    "193.2 Formulir Kepuasan",
+    "194 Distribusi",
+    "194.1 Perjanjian Reseller",
+    "194.2 Surat Penunjukan Agen",
+    "195 Kunjungan Bisnis",
+    "195.1 Surat Permohonan Kunjungan",
+    "195.2 Jadwal Pertemuan Penjajakan"
+  ],
+  "200": [
+    "210 Cuti",
+    "210.1 Cuti Melahirkan",
+    "210.2 Cuti Sakit",
+    "220 Pendidikan",
+    "220.1 Seminar/Workshop",
+    "230 Rekrutmen",
+    "230.1 Lamaran Kerja",
+    "240 Mutasi",
+    "250 SDM",
+    "250.1 Surat Keputusan (SK)",
+    "250.2 Kontrak Kerja Karyawan",
+    "250.3 Daftra Hadir"
+  ],
+  "300": [
+    "310 Anggaran",
+    "320 Perbankan",
+    "330 Perpajakan",
+    "340 Investasi",
+    "350 Laporan Keuangan"
+  ],
+  "400": [
+    "410 Darat",
+    "410.1 Motor",
+    "410.2 Mobil/Truck",
+    "420 Laut",
+    "430 Udara",
+    "440 Logistik & Ekspedisi"
+  ],
+  "500": [
+    "510 Siaran Pers",
+    "520 Brosur Promosi"
+  ],
+  "600": [
+    "610 Pemeliharaan Gedung",
+    "620 Inventaris Kantor",
+    "630 Pengadaan Alat"
+  ],
+  "700": [
+    "710 Domisili",
+    "720 Surat Kuasa Hukum"
+  ],
+  "800": [
+    "810 Pengadaan Software",
+    "820 Laporan Perbaikan IT",
+    "830 Hak Akses Sistem"
+  ],
+  "900": [
+    "910 Undangan",
+    "910.1 Undangan Berjudul",
+    "910.2 Undangan Tak Berjudul",
+    "920 Kuasa",
+    "920.1 Kuasa Intern",
+    "920.2 Kuasa Ekstern",
+    "920.3 Kuasa antar Individu",
+    "930 Keterangan",
+    "930.1 Biasa",
+    "930.2 Refrensi",
+    "930.3 Rekomendasi",
+    "930.4 Pernyataan",
+    "940 Memo",
+    "950 Nota",
+    "960 Edaran",
+    "970 Pengantar",
+    "970.1 Pengantar Berjudul",
+    "970.2 Pengantar Tak Berjudul",
+    "980 Permohonan",
+    "990 Keputusan",
+    "1000 Tugas"
+  ]
+}

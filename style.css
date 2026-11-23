@@ -1,0 +1,933 @@
+
+:root{--navy:#07366d;--blue:#0b559c;--sky:#eaf4ff;--pale:#f5f9ff;--ink:#172b4d;--muted:#62738c;--line:#d9e5f2;--white:#fff;--green:#167a55;--red:#c73e4d;--shadow:0 12px 35px rgba(10,52,99,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f7faff;line-height:1.55}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button,.btn{cursor:pointer;border:0;border-radius:9px;padding:11px 16px;background:var(--blue);color:#fff;font-weight:650;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}button:hover,.btn:hover{background:var(--navy);transform:translateY(-1px)}.btn-outline{background:#fff;color:var(--blue);border:1px solid #b8d0ed}.btn-light{background:#e8f3ff;color:var(--navy)}.btn-danger{background:#c73e4d}.btn-sm{padding:7px 10px;font-size:12px;border-radius:7px}.container{width:min(1220px,calc(100% - 40px));margin:auto}.topbar{height:82px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;z-index:50}.navwrap{display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;color:var(--navy);line-height:1.05;letter-spacing:.3px}.brand small{display:block;font-size:11px;letter-spacing:2.7px;margin-top:4px}.brand-mark{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:25px;border:3px solid #d8e9fb}.brand-mark svg{width:30px;height:30px}.nav{display:flex;align-items:center;gap:23px;font-size:13px;font-weight:650}.nav a,.dropbtn{padding:10px 0;color:#18385f;background:transparent;border-radius:0}.nav a:hover,.dropbtn:hover,.nav a.active{color:var(--blue)}.dropdown{position:relative}.dropbtn{display:flex;align-items:center;gap:5px}.dropdown-menu{display:none;position:absolute;top:100%;left:-12px;background:#fff;min-width:220px;padding:9px;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:12px}.dropdown.open .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:10px 12px;border-radius:8px}.dropdown-menu a:hover{background:var(--sky)}.mobile-toggle{display:none;background:#edf5ff;color:var(--navy)}.hero{min-height:455px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(240,248,255,.98) 0%,rgba(238,247,255,.91) 39%,rgba(8,51,95,.08) 100%),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=85') center/cover}.hero-content{max-width:620px;padding:68px 0}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:2.5px;font-weight:800;color:var(--blue)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(36px,5vw,66px);line-height:1.02;letter-spacing:-1.5px;color:var(--navy);margin:12px 0 16px}h2{font-size:30px;line-height:1.2;color:var(--navy);letter-spacing:-.5px}h3{color:var(--navy);font-size:17px;margin-bottom:8px}.lead{font-size:17px;color:#345171;max-width:570px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.section{padding:58px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.section-head p{color:var(--muted);margin-bottom:0}.grid{display:grid;gap:18px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 5px 18px rgba(10,52,99,.035)}.iconbox{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#e2f0ff;color:var(--blue);font-size:24px;margin-bottom:15px}.muted{color:var(--muted)}.pill{display:inline-flex;background:#eaf4ff;color:var(--blue);padding:5px 9px;border-radius:30px;font-size:11px;font-weight:800}.page-hero{padding:52px 0;background:linear-gradient(110deg,#eaf4ff,#fff);border-bottom:1px solid var(--line)}.breadcrumbs{font-size:12px;color:var(--muted);margin-bottom:14px}.page-hero h1{font-size:42px;margin-bottom:10px}.page-hero p{max-width:720px;color:var(--muted);margin-bottom:0}.feature-row{display:grid;grid-template-columns:1.25fr repeat(3,1fr);gap:16px;align-items:stretch}.feature-row .card{background:#f0f7ff}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{height:190px;border-radius:13px;overflow:hidden;background:#dcecff;position:relative}.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}.gallery-item span{position:absolute;bottom:0;left:0;right:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(3,31,63,.8));color:white;font-weight:700}.org-chart{text-align:center}.org-box{display:inline-block;background:var(--navy);color:white;padding:16px 24px;border-radius:12px;min-width:210px;font-weight:800}.org-sub{display:flex;justify-content:center;gap:15px;margin-top:28px;flex-wrap:wrap}.org-sub .card{min-width:150px}.timeline{border-left:3px solid #c8e0fa;margin-left:20px;padding-left:24px}.timeline-item{position:relative;padding:0 0 25px}.timeline-item:before{content:'';position:absolute;width:12px;height:12px;border:3px solid var(--blue);background:white;border-radius:50%;left:-33px;top:5px}.timeline-year{font-size:12px;color:var(--blue);font-weight:900}.footer{background:#092e55;color:#e7f2ff;padding:35px 0 0;margin-top:35px}.footer-grid{display:grid;grid-template-columns:1.3fr 1.15fr 1fr 1fr;gap:26px;padding-bottom:28px}.footer h3{color:#fff;font-size:14px}.footer p,.footer a{font-size:12px;color:#d3e4f8}.mapbox{height:120px;border-radius:10px;overflow:hidden;background:#d8e9f9;position:relative}.mapbox iframe{width:100%;height:100%;border:0}.socials{display:flex;gap:9px}.socials a{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:900}.copyright{border-top:1px solid rgba(255,255,255,.2);padding:14px 0;font-size:11px;color:#c4d7ec;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.app-layout{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:calc(100vh - 72px)}.sidebar{background:linear-gradient(180deg,#083c73,#052747);color:#dcecff;padding:20px 13px;display:flex;flex-direction:column;gap:6px}.side-brand{padding:7px 10px 22px;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:9px}.side-brand .brand{color:white}.side-link{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:9px;font-size:13px;color:#dcecff}.side-link:hover,.side-link.active{background:#1764a8;color:#fff}.side-link .ico{width:19px;text-align:center}.side-label{text-transform:uppercase;letter-spacing:1.4px;font-size:10px;color:#8db8e1;padding:15px 12px 5px}.app-main{min-width:0}.app-top{height:72px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:15px}.app-top strong{color:var(--navy)}.userchip{display:flex;align-items:center;gap:10px;font-size:12px}.avatar{width:37px;height:37px;background:#e2efff;color:var(--blue);border-radius:50%;display:grid;place-items:center;font-weight:900}.app-content{padding:27px}.welcome-banner{padding:27px;border-radius:15px;background:linear-gradient(90deg,#eff7ff 0%,rgba(239,247,255,.96) 55%,rgba(239,247,255,.35)),url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80') center/cover;border:1px solid #d8e7f7;margin-bottom:20px}.welcome-banner h1{font-size:29px;margin:7px 0}.welcome-banner p{max-width:620px;color:#49627f;margin:0}.company-profile{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.company-logo-large{background:#f1f7ff;border-radius:14px;display:grid;place-items:center;min-height:160px;color:var(--navy);font-size:22px;font-weight:900;text-align:center}.person-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.person{display:flex;align-items:center;gap:10px;padding:12px 15px;border:1px solid var(--line);border-radius:11px;background:#fff;min-width:200px}.person .avatar{flex-shrink:0}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:17px}.toolbar h2{font-size:26px;margin:0}.filters{display:flex;gap:10px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);padding:13px;border-radius:12px;margin-bottom:15px}.field{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}.field label{font-size:12px;font-weight:750;color:#36516f}.field input,.field select,.field textarea,.filters input,.filters select{width:100%;border:1px solid #d3e0ee;border-radius:8px;padding:10px 11px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus,.filters input:focus{border-color:#4387c9;box-shadow:0 0 0 3px #e2f1ff}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.form-grid .full{grid-column:1/-1}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:850px;font-size:12px}th{background:#e1f0ff;color:#123d6d;text-align:left;padding:13px 12px;border-bottom:1px solid #c9dff5;white-space:nowrap}td{padding:12px;border-bottom:1px solid #e7eef6;vertical-align:top}tr:hover td{background:#f8fbff}.table-actions{display:flex;gap:5px}.status{display:inline-block;padding:4px 8px;border-radius:20px;font-size:10px;font-weight:800;background:#e6f7ef;color:#17754e}.status.pending{background:#fff3d8;color:#93610c}.status.review{background:#e8f2ff;color:#1a5f9d}.empty-note{padding:24px;text-align:center;color:var(--muted)}.modal-backdrop{position:fixed;inset:0;background:rgba(4,23,46,.5);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal-backdrop.show{display:flex}.modal{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:16px;padding:25px;box-shadow:var(--shadow)}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.modal-head h2{font-size:22px;margin:0}.close-modal{background:#edf4fb;color:var(--navy);padding:7px 11px}.disposition-paper{border:1.5px solid #1b2b3d;padding:18px;background:#fff;color:#17212d;font-family:Georgia,serif}.paper-title{text-align:center;font-weight:900;font-size:20px;margin-bottom:20px}.paper-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid #26394c}.paper-grid div{padding:8px;border:1px solid #26394c;font-size:13px}.login-page{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#f2f7fd}.login-art{padding:60px;display:flex;flex-direction:column;justify-content:space-between;color:white;background:linear-gradient(135deg,rgba(3,43,83,.96),rgba(8,89,153,.82)),url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80') center/cover}.login-art h1{color:white;font-size:46px}.login-art p{max-width:500px;color:#e0efff}.login-panel{display:grid;place-items:center;padding:30px}.login-card{width:min(420px,100%);background:white;border:1px solid var(--line);border-radius:20px;padding:35px;box-shadow:var(--shadow)}.login-card .brand{justify-content:center;margin-bottom:28px}.login-card h2{text-align:center;font-size:25px}.login-card .muted{text-align:center;font-size:13px;margin-bottom:25px}.login-card .field{margin-bottom:15px}.login-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin:10px 0 20px}.login-bottom a{color:var(--blue)}.login-card button{width:100%}.back-home{text-align:center;margin-top:20px;font-size:12px;color:var(--muted)}.notice{padding:12px 14px;background:#fff6dd;border:1px solid #f1d99a;color:#795b15;border-radius:9px;font-size:12px;margin-bottom:16px}.toast{position:fixed;right:22px;bottom:22px;z-index:200;background:#092e55;color:white;padding:14px 18px;border-radius:10px;box-shadow:var(--shadow);display:none;max-width:360px}.toast.show{display:block}.classification-list{display:grid;gap:10px}.class-item{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:11px}.class-left{display:flex;align-items:center;gap:14px}.class-code{font-weight:900;color:var(--blue);background:#e8f4ff;padding:10px 12px;border-radius:8px;min-width:58px;text-align:center}.mini-list{display:grid;gap:8px}.mini-list a{padding:10px;border:1px solid var(--line);border-radius:8px;background:white}.hidden{display:none!important}.small{font-size:12px}.print-only{display:none}
+@media(max-width:1000px){.nav{gap:12px}.feature-row{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}.app-layout{grid-template-columns:205px minmax(0,1fr)}.sidebar{padding:14px 8px}.app-content{padding:20px}.company-profile{grid-template-columns:1fr}.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.container{width:min(100% - 28px,1220px)}.topbar{height:70px}.mobile-toggle{display:inline-flex}.nav{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;padding:15px 22px 22px;box-shadow:var(--shadow);align-items:stretch;flex-direction:column;gap:5px}.nav.show{display:flex}.dropdown-menu{position:static;box-shadow:none;border:0;padding-left:15px}.dropdown.open .dropdown-menu{display:block}.hero{min-height:450px;background-position:60% center}.hero-content{padding:50px 0}.grid-2,.grid-3,.grid-4,.gallery,.feature-row{grid-template-columns:1fr}.section{padding:42px 0}.page-hero h1{font-size:34px}.footer-grid{grid-template-columns:1fr}.app-layout{display:block}.sidebar{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:5px;padding:8px;background:linear-gradient(180deg,#083c73,#052747);position:relative;overflow:visible}.side-brand{display:none}.sidebar .side-label{display:none}.side-link{flex:0 0 auto;font-size:12px;padding:8px 10px;white-space:normal}.side-link .ico{width:auto}.app-top{height:64px;padding:0 15px}.app-content{padding:16px}.welcome-banner{padding:22px}.toolbar{align-items:stretch}.toolbar .btn{width:100%}.filters>*{min-width:100%}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.login-page{grid-template-columns:1fr}.login-art{display:none}.login-panel{min-height:100vh;padding:18px}.login-card{padding:25px}.copyright{display:block}.copyright span{display:block;margin-top:8px}.org-sub{gap:8px}.org-sub .card{min-width:130px}.company-logo-large{min-height:120px}}
+@media print{.topbar,.sidebar,.app-top,.toolbar,.filters,.footer,.no-print,button{display:none!important}.app-layout{display:block}.app-content{padding:0}.table-wrap{overflow:visible}table{min-width:0;font-size:10px}.print-only{display:block}.card{box-shadow:none}}
+
+
+/* Dropdown navigation: open only when clicked, with login menu aligned to the right */
+.nav > .dropdown:last-child .dropdown-menu{left:auto;right:0}
+@media(max-width:760px){
+  .nav > .dropdown:last-child .dropdown-menu{left:auto;right:auto}
+}
+
+/* Disposisi: kolom instruksi dan pengesahan pimpinan */
+.instruction-signature{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(190px,1fr);gap:14px;align-items:stretch}.instruction-box,.signature-box{min-width:0}.signature-box{padding:8px;border-left:1px solid #26394c;display:flex;flex-direction:column}.signature-date,.signature-name{width:100%;border:1px solid #b9c8d8;border-radius:4px;padding:6px;font:12px Georgia,serif;margin-top:5px;background:#fff;color:#17212d}.signature-space{height:86px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:7px;font-size:11px;color:#5c6672}.signature-name{text-align:center;border:0;border-bottom:1px solid #26394c;font-weight:bold}.signature-caption{text-align:center;font-size:10px;margin-top:4px}@media(max-width:700px){.instruction-signature{grid-template-columns:1fr}.signature-box{border-left:0;border-top:1px solid #26394c;padding-top:12px}}@media print{.instruction-signature{grid-template-columns:minmax(0,1.6fr) minmax(170px,1fr)}.signature-date,.signature-name{border:0;border-bottom:1px solid #26394c;border-radius:0}}
+
+/* Perbaikan lembar disposisi: konten tidak terpotong pada kolom kanan */
+.disposition-layout{grid-template-columns:minmax(0,1fr)!important;align-items:start}
+.disposition-layout>.card{min-width:0;width:100%;overflow:hidden}
+.disposition-paper{width:100%;max-width:100%;min-width:0;overflow:visible;padding:clamp(12px,2vw,22px)}
+.paper-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:100%;min-width:0}
+.paper-grid>div{min-width:0;overflow-wrap:anywhere;word-break:normal}
+.paper-grid input,.paper-grid textarea{max-width:100%;min-width:0;box-sizing:border-box}
+.paper-title{font-size:clamp(18px,2vw,24px);line-height:1.25;overflow-wrap:anywhere}
+.instruction-signature{grid-column:1/-1;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.signature-box{min-width:0}
+@media(max-width:900px){.paper-grid{grid-template-columns:minmax(0,1fr)}.instruction-signature{grid-template-columns:minmax(0,1fr)}.signature-box{border-left:0;border-top:1px solid #26394c;padding-top:12px}}
+@media print{.disposition-layout{grid-template-columns:1fr!important}.disposition-layout>.card{box-shadow:none;border:0}.disposition-paper{width:100%;overflow:visible}.paper-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Lembar disposisi disusun mengikuti format contoh pengguna */
+.disposition-layout{grid-template-columns:minmax(0,1fr)!important;align-items:start}
+.disposition-layout>.card{min-width:0;width:100%;overflow:hidden}
+.disposition-paper{box-sizing:border-box;width:100%;max-width:100%;padding:0;background:#fff;color:#111;border:1.5px solid #172b42;font-family:Georgia,'Times New Roman',serif;overflow:visible}
+.disp-heading{position:relative;min-height:84px;border-bottom:1.5px solid #172b42;display:flex;align-items:flex-start;justify-content:center;padding:18px 16px 12px;box-sizing:border-box}
+.disposition-paper .paper-title{font-size:clamp(20px,2vw,30px);font-weight:bold;text-align:center;margin:0;line-height:1.2}
+.priority-boxes{position:absolute;right:12px;top:12px;display:flex}
+.priority-boxes span{width:34px;height:34px;border:1.5px solid #111;display:grid;place-items:center;font-size:19px;font-weight:bold}
+.disp-toprow{display:grid;grid-template-columns:1.1fr 1fr;border-bottom:1.5px solid #172b42}
+.disp-toprow>div{min-height:76px;padding:8px 10px;border-right:1.5px solid #172b42;box-sizing:border-box;font-size:15px}
+.disp-toprow>div:last-child{border-right:0}
+.disp-value{margin-top:8px;overflow-wrap:anywhere}
+.disp-line-input{display:block;width:100%;box-sizing:border-box;border:0;border-bottom:1px solid #777;border-radius:0;padding:6px 0;background:transparent;color:#111;font:14px Georgia,serif}
+.disp-metadata{padding:8px 12px;border-bottom:1.5px solid #172b42;display:grid;grid-template-columns:1fr;gap:3px;font-size:14px}
+.disp-metadata>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px;overflow-wrap:anywhere}
+.disp-instruction-sign{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(180px,1fr);border-bottom:1.5px solid #172b42;min-height:180px}
+.disp-instruction{padding:10px;border-right:1.5px solid #172b42;min-width:0;font-size:15px}
+.disp-instruction textarea{display:block;width:100%;box-sizing:border-box;resize:vertical;border:0;outline:0;background:transparent;color:#111;font:14px Georgia,serif;margin-top:8px;min-height:125px}
+.disp-signature{padding:10px;display:flex;flex-direction:column;min-width:0;font-size:14px}
+.disp-signature .signature-date,.disp-signature .signature-name{box-sizing:border-box;width:100%;max-width:100%;font:13px Georgia,serif;color:#111;background:transparent}
+.disp-signature .signature-date{border:0;border-bottom:1px solid #777;border-radius:0;margin-top:5px;padding:5px 0}
+.disp-signature .signature-space{height:70px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;color:#333;font-size:12px}
+.disp-signature .signature-name{border:0;border-bottom:1px solid #111;border-radius:0;text-align:center;padding:5px 0;font-weight:bold}
+.disp-signature .signature-caption{text-align:center;font-size:12px;margin-top:4px}
+.disp-forward{padding:8px 12px;border-bottom:1.5px solid #172b42;font-size:14px}
+.disp-forward>div{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;margin-top:4px}
+.disp-forward input{width:100%;box-sizing:border-box;border:0;border-bottom:1px dotted #555;border-radius:0;background:transparent;font:13px Georgia,serif;padding:4px;color:#111}
+.disp-legend{text-align:center;padding:7px;font-size:14px;font-weight:normal}
+@media(max-width:700px){.disp-heading{padding-top:58px}.disp-toprow{grid-template-columns:1fr}.disp-toprow>div{border-right:0;border-bottom:1px solid #172b42}.disp-instruction-sign{grid-template-columns:1fr}.disp-instruction{border-right:0;border-bottom:1px solid #172b42}.disp-metadata>div{grid-template-columns:110px minmax(0,1fr)}}
+@media print{.app-top,.sidebar,.toolbar,.muted.small,#saveDispositionWhatsapp{display:none!important}.app-content,.disposition-layout,.disposition-layout>.card{display:block!important;width:100%!important;padding:0!important;margin:0!important;box-shadow:none!important;border:0!important}.disposition-paper{width:100%;break-inside:avoid}.disp-instruction textarea{resize:none}}
+
+/* Tanda tangan pimpinan: otomatis tampil pada lembar disposisi dan hasil cetak */
+.signature-space{min-height:76px;display:flex;align-items:center;justify-content:center;padding:4px 8px;box-sizing:border-box}.signature-image{display:block;max-width:100%;width:190px;max-height:76px;object-fit:contain;mix-blend-mode:multiply}.disp-signature{min-width:0}@media print{.signature-image{max-height:72px;max-width:100%}}
+
+/* Revisi khusus disposisi: prioritas interaktif, perihal satu kolom, semua kolom dapat diedit */
+.priority-boxes .priority-choice{width:34px;height:34px;min-width:34px;padding:0;margin:0;border:1.5px solid #111;border-radius:0;background:#fff;color:#111;display:grid;place-items:center;font-family:Georgia,serif;font-size:19px;font-weight:bold;cursor:pointer}
+.priority-boxes .priority-choice.active{background:#c9c9c9;box-shadow:inset 0 0 0 3px #fff}
+.disp-toprow{grid-template-columns:minmax(0,1fr)!important}
+.disp-toprow>div{border-right:0!important;min-width:0}
+.disp-subject .disp-line-input{font-family:Georgia,serif;font-size:15px;padding:8px 0}
+.disp-metadata input{min-width:0;width:100%;font-family:Georgia,serif;font-size:14px}
+.disp-instruction textarea,.disp-forward input,.disp-signature input{font-family:Georgia,serif}
+@media print{
+ .priority-boxes .priority-choice{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .editable-disp{color:#111!important;background:transparent!important}
+}
+
+/* Revisi tambahan: perihal dan tanggal terima berdampingan serta dapat diedit */
+.disp-toprow{grid-template-columns:minmax(0,1.1fr) minmax(220px,1fr)!important}
+.disp-toprow>div{min-height:76px;padding:8px 10px;border-right:1.5px solid #172b42!important}
+.disp-toprow>div:last-child{border-right:0!important}
+.disp-subject-input,.disp-received-input{margin-top:4px;font-size:15px}
+@media(max-width:700px){.disp-toprow{grid-template-columns:1fr!important}.disp-toprow>div{border-right:0!important;border-bottom:1px solid #172b42}.disp-toprow>div:last-child{border-bottom:0}}
+@media print{.disp-toprow{grid-template-columns:minmax(0,1.1fr) minmax(220px,1fr)!important}}
+
+
+/* Perapian tabel agenda: kolom lebih proporsional dan baris tidak terlalu tinggi */
+.table-wrap{width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;border-radius:12px}
+.table-wrap table{width:100%;min-width:1450px;table-layout:fixed;font-size:13px}
+.table-wrap th,.table-wrap td{padding:12px 10px;line-height:1.5}
+.table-wrap th:nth-child(1),.table-wrap td:nth-child(1){width:48px}
+.table-wrap th:nth-child(2),.table-wrap td:nth-child(2){width:135px}
+.table-wrap th:nth-child(3),.table-wrap td:nth-child(3){width:175px}
+.table-wrap th:nth-child(4),.table-wrap td:nth-child(4){width:135px}
+.table-wrap th:nth-child(5),.table-wrap td:nth-child(5){width:190px}
+.table-wrap th:nth-child(6),.table-wrap td:nth-child(6){width:170px}
+.table-wrap th:nth-child(7),.table-wrap td:nth-child(7){width:255px}
+.table-wrap th:nth-child(8),.table-wrap td:nth-child(8){width:145px}
+.table-wrap th:nth-child(9),.table-wrap td:nth-child(9){width:115px}
+.table-wrap th:nth-child(10),.table-wrap td:nth-child(10){width:245px}
+.table-wrap td:nth-child(1),.table-wrap td:nth-child(2),.table-wrap td:nth-child(4),.table-wrap td:nth-child(8),.table-wrap td:nth-child(9){overflow-wrap:normal;word-break:normal}
+.table-wrap td:nth-child(3),.table-wrap td:nth-child(5),.table-wrap td:nth-child(6),.table-wrap td:nth-child(7){overflow-wrap:anywhere;word-break:normal}
+.table-wrap td:nth-child(10){white-space:nowrap}
+.table-wrap .table-actions{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;min-width:max-content}
+.table-wrap .table-actions .btn{flex:0 0 auto;padding:9px 12px}
+@media(max-width:900px){.table-wrap table{min-width:1300px}.table-wrap th,.table-wrap td{padding:10px 8px}}
+
+/* Tambahan khusus: popover profil pengguna. Tidak mengubah gaya fitur lain. */
+.user-profile-wrap{position:relative;display:flex;align-items:center;gap:10px}.user-profile-trigger{display:flex;align-items:center;gap:10px;background:transparent;border:0;padding:4px;cursor:pointer;color:inherit;text-align:left}.user-profile-trigger .profile-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:3px solid #e8f1ff;background:#e6f0ff}.user-profile-trigger .profile-avatar.initial{display:grid;place-items:center;font-weight:700;color:#1558a6}.profile-popover{position:absolute;right:0;top:calc(100% + 12px);width:320px;background:#fff;border:1px solid #e1e8f2;border-radius:18px;box-shadow:0 16px 42px rgba(20,42,74,.22);overflow:hidden;z-index:1000;display:none}.profile-popover.open{display:block}.profile-popover-head{background:#10233f;color:#fff;padding:22px 18px;text-align:center}.profile-popover-head img,.profile-popover-head .profile-avatar{width:94px;height:94px;border-radius:50%;object-fit:cover;border:4px solid #fff;margin:0 auto 12px;display:grid;place-items:center}.profile-popover-head strong{display:block;font-size:18px}.profile-popover-head span{display:block;margin-top:4px;color:#d5deec}.profile-popover-actions{display:flex;gap:10px;padding:12px}.profile-popover-actions a,.profile-popover-actions button{flex:1;text-align:center;padding:12px 8px;border:1px solid #dce5f2;border-radius:10px;background:#fff;color:#18385f;font-weight:600;cursor:pointer}.profile-popover-actions a:hover,.profile-popover-actions button:hover{background:#f3f7fd}@media(max-width:560px){.profile-popover{width:min(320px,calc(100vw - 24px))}.user-profile-wrap .user-name{display:none}}
+
+
+/* Revisi khusus: tombol aksi Surat Masuk dan Surat Keluar ditampilkan vertikal. */
+body:has(a[href="surat-masuk.html"].active) .table-wrap .table-actions,
+body:has(a[href="surat-keluar.html"].active) .table-wrap .table-actions {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 8px;
+  min-width: 112px;
+  width: 112px;
+}
+body:has(a[href="surat-masuk.html"].active) .table-wrap .table-actions > .btn,
+body:has(a[href="surat-keluar.html"].active) .table-wrap .table-actions > .btn,
+body:has(a[href="surat-keluar.html"].active) .table-wrap .table-actions > a.btn {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  white-space: normal;
+}
+body:has(a[href="surat-keluar.html"].active) .table-wrap .table-actions .attachment-name {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+
+/* Perapian khusus tabel persetujuan disposisi pada dashboard Pemimpin */
+.approval-table-wrap{overflow-x:auto;overflow-y:hidden;border:1px solid #dce7f3;border-radius:12px;background:#fff}
+.approval-table-wrap .approval-table{width:100%;min-width:1080px;table-layout:fixed;border-collapse:separate;border-spacing:0;font-size:13px}
+.approval-table-wrap .approval-table th{padding:14px 14px;background:#eaf3ff;color:#173f6d;font-size:12px;letter-spacing:.2px;vertical-align:middle;white-space:normal}
+.approval-table-wrap .approval-table td{padding:15px 14px;line-height:1.55;vertical-align:top;white-space:normal;overflow-wrap:anywhere;word-break:normal}
+.approval-table-wrap .approval-table th:nth-child(1),.approval-table-wrap .approval-table td:nth-child(1){width:155px}
+.approval-table-wrap .approval-table th:nth-child(2),.approval-table-wrap .approval-table td:nth-child(2){width:205px}
+.approval-table-wrap .approval-table th:nth-child(3),.approval-table-wrap .approval-table td:nth-child(3){width:175px}
+.approval-table-wrap .approval-table th:nth-child(4),.approval-table-wrap .approval-table td:nth-child(4){width:285px}
+.approval-table-wrap .approval-table th:nth-child(5),.approval-table-wrap .approval-table td:nth-child(5){width:135px}
+.approval-table-wrap .approval-table th:nth-child(6),.approval-table-wrap .approval-table td:nth-child(6){width:225px}
+.approval-table-wrap .approval-table .status{display:inline-flex;align-items:center;justify-content:center;max-width:100%;padding:6px 10px;white-space:normal;text-align:center;line-height:1.35;font-size:11px}
+.approval-table-wrap .approval-table td:last-child{vertical-align:middle}
+.approval-table-wrap .approval-table td:last-child .btn{display:inline-flex;max-width:100%;white-space:normal;text-align:center;line-height:1.35;margin:2px 0}
+.approval-table-wrap .approval-table tbody tr:nth-child(even) td{background:#fbfdff}
+.approval-table-wrap .approval-table tbody tr:hover td{background:#f2f8ff}
+@media(max-width:900px){.approval-table-wrap .approval-table{min-width:1080px}.approval-table-wrap .approval-table th,.approval-table-wrap .approval-table td{padding:11px 10px}}
+/* Status disposisi pada agenda surat masuk */
+.status-stack{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:125px}
+.status.approved{background:#e6f7ef;color:#17754e}
+.status-stack .status{white-space:normal;line-height:1.35;max-width:180px}
+
+/* Revisi cetak buku agenda: seluruh kolom dicetak pada kertas lanskap */
+@media print {
+  .agenda-page { background:#fff !important; }
+  .agenda-page .app-layout, .agenda-page .app-main, .agenda-page .app-content { display:block !important; width:100% !important; min-width:0 !important; margin:0 !important; padding:0 !important; }
+  .agenda-page .table-wrap { overflow:visible !important; border:0 !important; width:100% !important; }
+  .agenda-page table { width:100% !important; min-width:0 !important; table-layout:fixed !important; font-size:7.5pt !important; }
+  .agenda-page th, .agenda-page td { padding:4px 3px !important; white-space:normal !important; overflow-wrap:anywhere !important; word-break:normal !important; }
+  .agenda-page th:last-child, .agenda-page td:last-child { display:none !important; }
+  .agenda-page .status-stack { display:flex !important; flex-direction:column !important; gap:2px !important; }
+  .agenda-page .status { font-size:7pt !important; padding:2px 4px !important; }
+  .agenda-page .table-wrap table { break-inside:auto; }
+  .agenda-page tr { break-inside:avoid; }
+  .agenda-page .toolbar, .agenda-page .filters, .agenda-page .sidebar, .agenda-page .app-top, .agenda-page .table-actions, .agenda-page button, .agenda-page .modal-backdrop, .agenda-page #toast { display:none !important; }
+  .agenda-page .toolbar h2 { display:block !important; }
+  .agenda-page .app-content:before { content:"PT DIGITAL MANDIRI — BUKU AGENDA SURAT"; display:block; text-align:center; font-size:14pt; font-weight:bold; margin:0 0 10px; }
+  .agenda-page.incoming-agenda .app-content:before { content:"PT DIGITAL MANDIRI — BUKU AGENDA SURAT MASUK"; }
+  .agenda-page.outgoing-agenda .app-content:before { content:"PT DIGITAL MANDIRI — BUKU AGENDA SURAT KELUAR"; }
+}
+@page agenda-landscape { size: landscape; margin: 8mm; }
+@media print { .agenda-page { page: agenda-landscape; } }
+@media print {
+  .classification-page .app-layout,.classification-page .app-main,.classification-page .app-content { display:block !important; width:100% !important; padding:0 !important; margin:0 !important; }
+  .classification-page .class-item, .classification-page .subclass { break-inside:avoid; }
+  .classification-page details.class-item:not([open]) > :not(summary) { display:block !important; }
+  .classification-page .class-view,.classification-page .class-view-sub { display:none !important; }
+  .classification-page .class-modal-backdrop { display:none !important; }
+}
+
+
+/* Revisi cetak: surat masuk hanya sampai kolom Kode Arsip; kontrol aksi tidak dicetak. */
+@media print {
+  .incoming-agenda .table-wrap th:nth-child(9), .incoming-agenda .table-wrap td:nth-child(9),
+  .incoming-agenda .table-wrap th:nth-child(10), .incoming-agenda .table-wrap td:nth-child(10) { display:none !important; }
+  .outgoing-agenda .table-wrap th:last-child, .outgoing-agenda .table-wrap td:last-child { display:none !important; }
+  .agenda-page .table-actions, .agenda-page .table-actions *, .agenda-page .btn, .agenda-page button { display:none !important; }
+  .classification-page .sidebar, .classification-page .app-top, .classification-page .toolbar,
+  .classification-page .filters, .classification-page .class-modal-backdrop,
+  .classification-page #toast, .classification-page button { display:none !important; }
+  .classification-page .app-content:before { content:"PT DIGITAL MANDIRI — DAFTAR KLASIFIKASI ARSIP"; display:block; text-align:center; font-size:14pt; font-weight:bold; margin:0 0 12px; }
+  .classification-page .classification-list { display:block !important; }
+  .classification-page details.class-item, .classification-page details.subclass { display:block !important; break-inside:avoid; page-break-inside:avoid; }
+  .classification-page details.class-item:not([open]) > :not(summary), .classification-page details.subclass:not([open]) > :not(summary) { display:block !important; }
+  .classification-page .class-view, .classification-page .class-view-sub { display:none !important; }
+}
+
+
+/* Perbaikan final cetak agenda dan klasifikasi arsip */
+@media print {
+  .incoming-agenda .table-wrap th:nth-child(n+9),
+  .incoming-agenda .table-wrap td:nth-child(n+9),
+  .outgoing-agenda .table-wrap th:nth-child(n+9),
+  .outgoing-agenda .table-wrap td:nth-child(n+9) { display:none !important; }
+  .agenda-page .table-wrap th, .agenda-page .table-wrap td { text-align:center !important; vertical-align:middle !important; }
+  .agenda-page .app-content > .card, .agenda-page .app-content > .notice,
+  .agenda-page .app-content > .modal-backdrop, .agenda-page .app-content > section:not(.table-wrap) { display:none !important; }
+  .classification-page .sidebar, .classification-page .app-top,
+  .classification-page .toolbar, .classification-page .filters,
+  .classification-page .class-modal-backdrop, .classification-page #toast,
+  .classification-page button { display:none !important; }
+  .classification-page .app-content:before { content:"PT DIGITAL MANDIRI — DAFTAR KLASIFIKASI ARSIP"; display:block; text-align:center; font-size:14pt; font-weight:bold; margin:0 0 12px; }
+  .classification-page .classification-list { display:block !important; }
+  .classification-page details.class-item, .classification-page details.subclass { display:block !important; }
+  .classification-page details.class-item > :not(summary),
+  .classification-page details.subclass > :not(summary) { display:block !important; }
+  .classification-page .class-item, .classification-page .subclass, .classification-page .subsub-row { break-inside:avoid; page-break-inside:avoid; }
+}
+
+
+/* Perapian cetak klasifikasi arsip: alur normal, tanpa halaman kosong sebelum daftar. */
+@media print {
+  @page { size: A4 portrait; margin: 10mm; }
+  .classification-page, .classification-page body { background:#fff !important; }
+  .classification-page .app-layout, .classification-page .app-main, .classification-page .app-content { display:block !important; width:100% !important; min-width:0 !important; margin:0 !important; padding:0 !important; }
+  .classification-page .classification-list { display:block !important; margin:0 !important; padding:0 !important; }
+  .classification-page .class-item, .classification-page details.class-item, .classification-page details.subclass { display:block !important; position:static !important; float:none !important; width:100% !important; margin:0 0 5px !important; padding:0 !important; border:0 !important; box-shadow:none !important; background:#fff !important; break-inside:auto !important; page-break-inside:auto !important; }
+  .classification-page details.class-item > summary, .classification-page details.subclass > summary { display:flex !important; align-items:center !important; gap:10px !important; padding:6px 8px !important; border:1px solid #d7e2ef !important; border-radius:5px !important; background:#f4f8fc !important; color:#123d6d !important; break-after:avoid !important; }
+  .classification-page .subclass-wrap { display:block !important; margin:3px 0 4px 16px !important; padding-left:8px !important; border-left:1px solid #cbdcf0 !important; }
+  .classification-page .subsub { display:block !important; margin-left:12px !important; }
+  .classification-page .subsub-row { display:grid !important; grid-template-columns:72px minmax(0,1fr) !important; gap:8px !important; padding:3px 6px !important; border-bottom:1px solid #edf1f6 !important; break-inside:avoid !important; page-break-inside:avoid !important; font-size:9pt !important; }
+  .classification-page .class-desc { font-size:8pt !important; }
+  .classification-page .sidebar, .classification-page .app-top, .classification-page .toolbar, .classification-page .filters, .classification-page .class-modal-backdrop, .classification-page #toast, .classification-page button { display:none !important; }
+  .classification-page .app-content:before { content:"PT DIGITAL MANDIRI — DAFTAR KLASIFIKASI ARSIP"; display:block !important; text-align:center !important; font-size:14pt !important; font-weight:bold !important; margin:0 0 8mm !important; }
+  .classification-page details.class-item > :not(summary), .classification-page details.subclass > :not(summary) { display:block !important; }
+  .classification-page .class-view, .classification-page .class-view-sub { display:none !important; }
+}
+
+
+/* Struktur organisasi pada beranda setelah login */
+.dashboard-org{padding:22px;overflow:hidden}
+.dashboard-org-head{align-items:center;margin-bottom:22px}
+.dashboard-org-head h2{font-size:24px;margin:5px 0 6px}
+.dashboard-org-head p{font-size:13px}
+.dashboard-org-chart{padding:4px 0 0}
+.dashboard-org-chart .org-box{min-width:230px;max-width:100%;line-height:1.45}
+.dashboard-org-chart .org-connector{height:24px;width:2px;background:#b6d5f4;margin:0 auto}
+.dashboard-org-chart .org-secretary{background:#1764a8}
+.dashboard-org-sub{margin-top:24px;position:relative;gap:12px}
+.dashboard-org-sub .card{flex:1 1 145px;min-width:145px;padding:16px 12px;box-shadow:none}
+.dashboard-org-sub .iconbox{width:38px;height:38px;font-size:18px;margin:0 auto 10px}
+.dashboard-org-sub b{display:block;color:var(--navy);font-size:13px}
+.dashboard-org-sub p{margin:5px 0 0}
+@media(max-width:760px){.dashboard-org{padding:16px}.dashboard-org-head{align-items:flex-start;flex-direction:column}.dashboard-org-head .btn{width:auto}.dashboard-org-chart .org-box{min-width:200px;padding:13px 16px}.dashboard-org-sub .card{flex-basis:calc(50% - 8px);min-width:0}.dashboard-org-sub{gap:8px}}
+
+
+/* Header resmi untuk cetak Buku Agenda dan Klasifikasi Arsip */
+.print-company-header{display:none}
+@media print{
+  .print-company-header{display:grid!important;grid-template-columns:92px 1fr;align-items:center;gap:12px;width:100%;box-sizing:border-box;padding:0 8px 9px;margin:0 0 12px;border-bottom:7px double #111;color:#111;font-family:Georgia,"Times New Roman",serif}
+  .print-company-header img{width:68px;height:78px;object-fit:contain;justify-self:center}
+  .print-company-info{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.15}
+  .print-company-info strong{font-size:16pt;font-weight:700;letter-spacing:.2px}
+  .print-company-info span{font-size:11.5pt}
+  .agenda-page .app-content:before,.classification-page .app-content:before{content:none!important;display:none!important}
+  .agenda-page .table-wrap{overflow:visible!important;border:0!important}
+  .agenda-page .table-wrap table{border-collapse:collapse!important;border:1px solid #111!important;width:100%!important;table-layout:fixed!important;font-family:Arial,sans-serif!important;font-size:8pt!important}
+  .agenda-page .table-wrap thead{display:table-header-group!important}
+  .agenda-page .table-wrap th,.agenda-page .table-wrap td{border:1px solid #333!important;padding:5px 4px!important;color:#111!important;text-align:center!important;vertical-align:middle!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  .agenda-page .table-wrap th{background:#e9eef5!important;font-weight:700!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  /* Cetakan agenda mengikuti format contoh: No, Tanggal Terima, Nomor Surat, Tanggal Surat, Dari/Kepada, Perihal, Isi Ringkas, Kode Arsip. */
+  .agenda-page .table-wrap th:nth-child(2),.agenda-page .table-wrap td:nth-child(2),
+  .agenda-page .table-wrap th:nth-child(10),.agenda-page .table-wrap td:nth-child(10),
+  .agenda-page .table-wrap th:nth-child(11),.agenda-page .table-wrap td:nth-child(11){display:none!important}
+  .agenda-page .table-wrap th:nth-child(9),.agenda-page .table-wrap td:nth-child(9){display:table-cell!important}
+  .agenda-page .table-wrap tr{break-inside:avoid!important;page-break-inside:avoid!important}
+  .classification-page .classification-list{display:block!important}
+  .classification-page .class-item,.classification-page details.class-item,.classification-page details.subclass{break-inside:avoid!important;page-break-inside:avoid!important}
+  .classification-page .class-item>summary,.classification-page .subclass>summary{border:1px solid #222!important;background:#edf2f7!important;color:#111!important}
+  .classification-page .subsub-row{border:1px solid #777!important;border-radius:0!important;background:#fff!important;color:#111!important}
+}
+@page agenda-landscape{size:landscape;margin:8mm}
+@media print{.agenda-page{page:agenda-landscape}}
+
+/* FINAL OVERRIDE: kop perusahaan dan format cetak agenda/klasifikasi yang konsisten */
+@media print {
+  html, body { background:#fff !important; color:#111 !important; }
+  .print-company-header {
+    display:grid !important;
+    grid-template-columns:100px minmax(0,1fr) !important;
+    align-items:center !important;
+    gap:12px !important;
+    width:100% !important;
+    min-height:88px !important;
+    box-sizing:border-box !important;
+    padding:0 8px 8px !important;
+    margin:0 0 10px !important;
+    border-bottom:7px double #111 !important;
+    color:#111 !important;
+    font-family:"Times New Roman",serif !important;
+  }
+  .print-company-header img { display:block !important; width:76px !important; height:78px !important; object-fit:contain !important; justify-self:center !important; }
+  .print-company-info { display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important; text-align:center !important; line-height:1.12 !important; }
+  .print-company-info strong { display:block !important; font-size:16pt !important; font-weight:700 !important; }
+  .print-company-info span { display:block !important; font-size:11pt !important; }
+  .agenda-page .app-content:before, .classification-page .app-content:before { content:none !important; display:none !important; }
+  .agenda-page .toolbar, .agenda-page .filters, .agenda-page .sidebar, .agenda-page .app-top,
+  .agenda-page .table-actions, .agenda-page button, .agenda-page .modal-backdrop,
+  .agenda-page #toast, .agenda-page .app-content > .card:not(.table-wrap) { display:none !important; }
+  .agenda-page .app-layout, .agenda-page .app-main, .agenda-page .app-content { display:block !important; width:100% !important; min-width:0 !important; margin:0 !important; padding:0 !important; }
+  .agenda-page .app-content:after { display:block !important; text-align:center !important; font: bold 13pt Arial,sans-serif !important; margin:0 0 8px !important; color:#111 !important; }
+  .incoming-agenda .app-content:after { content:"BUKU AGENDA SURAT MASUK" !important; }
+  .outgoing-agenda .app-content:after { content:"BUKU AGENDA SURAT KELUAR" !important; }
+  .agenda-page .table-wrap { display:block !important; overflow:visible !important; width:100% !important; border:0 !important; margin:0 !important; }
+  .agenda-page .table-wrap table { display:table !important; width:100% !important; min-width:0 !important; table-layout:fixed !important; border-collapse:collapse !important; border:1px solid #111 !important; font:8pt Arial,sans-serif !important; }
+  .agenda-page .table-wrap thead { display:table-header-group !important; }
+  .agenda-page .table-wrap tr { break-inside:avoid !important; page-break-inside:avoid !important; }
+  .agenda-page .table-wrap th, .agenda-page .table-wrap td { display:table-cell !important; border:1px solid #333 !important; padding:4px 3px !important; color:#111 !important; text-align:center !important; vertical-align:middle !important; white-space:normal !important; overflow-wrap:anywhere !important; }
+  /* Cetak kolom inti saja: No, tanggal, nomor, tanggal surat, pihak, perihal, ringkasan, kode arsip. */
+  .agenda-page .table-wrap th:nth-child(2), .agenda-page .table-wrap td:nth-child(2),
+  .agenda-page .table-wrap th:nth-child(10), .agenda-page .table-wrap td:nth-child(10),
+  .agenda-page .table-wrap th:nth-child(11), .agenda-page .table-wrap td:nth-child(11) { display:none !important; }
+  .agenda-page .table-wrap th:nth-child(1), .agenda-page .table-wrap td:nth-child(1) { width:4% !important; }
+  .agenda-page .table-wrap th:nth-child(3), .agenda-page .table-wrap td:nth-child(3) { width:10% !important; }
+  .agenda-page .table-wrap th:nth-child(4), .agenda-page .table-wrap td:nth-child(4) { width:14% !important; }
+  .agenda-page .table-wrap th:nth-child(5), .agenda-page .table-wrap td:nth-child(5) { width:10% !important; }
+  .agenda-page .table-wrap th:nth-child(6), .agenda-page .table-wrap td:nth-child(6) { width:17% !important; }
+  .agenda-page .table-wrap th:nth-child(7), .agenda-page .table-wrap td:nth-child(7) { width:13% !important; }
+  .agenda-page .table-wrap th:nth-child(8), .agenda-page .table-wrap td:nth-child(8) { width:24% !important; }
+  .agenda-page .table-wrap th:nth-child(9), .agenda-page .table-wrap td:nth-child(9) { width:8% !important; }
+
+  .classification-page .sidebar, .classification-page .app-top, .classification-page .toolbar,
+  .classification-page .filters, .classification-page .class-modal-backdrop,
+  .classification-page #toast, .classification-page button { display:none !important; }
+  .classification-page .app-layout, .classification-page .app-main, .classification-page .app-content { display:block !important; width:100% !important; min-width:0 !important; margin:0 !important; padding:0 !important; }
+  .classification-page .classification-list { display:block !important; width:100% !important; margin:0 !important; padding:0 !important; }
+  .classification-page .classification-list:before { content:"DAFTAR KLASIFIKASI ARSIP"; display:block !important; text-align:center !important; font:bold 13pt Arial,sans-serif !important; margin:0 0 8px !important; color:#111 !important; }
+  .classification-page details.class-item, .classification-page details.subclass, .classification-page .classification-node { display:block !important; position:static !important; width:100% !important; margin:0 0 5px !important; padding:4px !important; border:1px solid #555 !important; border-radius:0 !important; box-shadow:none !important; background:#fff !important; break-inside:avoid-page !important; }
+  .classification-page details.class-item > summary, .classification-page details.subclass > summary,
+  .classification-page .classification-node > summary { display:flex !important; padding:5px 7px !important; border:1px solid #777 !important; background:#edf2f7 !important; color:#111 !important; }
+  .classification-page details.class-item > :not(summary), .classification-page details.subclass > :not(summary), .classification-page .classification-node > :not(summary) { display:block !important; }
+  .classification-page .subclass-wrap, .classification-page .classification-children { display:block !important; margin:4px 0 4px 14px !important; padding-left:9px !important; border-left:1px solid #777 !important; }
+  .classification-page .subsub, .classification-page .classification-tree-content { display:block !important; margin:4px 0 4px 12px !important; padding-left:8px !important; }
+  .classification-page .subsub-row { display:grid !important; grid-template-columns:85px minmax(0,1fr) !important; border:1px solid #aaa !important; border-radius:0 !important; background:#fff !important; padding:4px 6px !important; color:#111 !important; font-size:9pt !important; break-inside:avoid !important; }
+  .classification-page .class-desc, .classification-page .muted { color:#333 !important; }
+}
+@page agenda-landscape { size:landscape; margin:8mm; }
+@page classification-print { size:A4 portrait; margin:12mm; }
+@media print { .classification-page { page:classification-print; } }
+
+
+/* FINAL FIX CETAK: judul tepat di bawah kop, daftar klasifikasi langsung dimulai. */
+.print-document-title { display:none; }
+@media print {
+  .print-document-title {
+    display:block !important;
+    width:100% !important;
+    margin:0 0 7mm !important;
+    padding:0 !important;
+    text-align:center !important;
+    color:#111 !important;
+    font:700 13pt Arial,sans-serif !important;
+    line-height:1.2 !important;
+    break-after:avoid !important;
+    page-break-after:avoid !important;
+  }
+
+  /* Agenda: kop -> judul -> tabel. Tidak ada judul pseudo-element di bagian bawah. */
+  .agenda-page .app-content:after { content:none !important; display:none !important; }
+  .agenda-page .print-company-header { margin-bottom:5mm !important; }
+  .agenda-page .print-document-title { margin-bottom:5mm !important; }
+  .agenda-page .table-wrap { break-before:avoid !important; page-break-before:avoid !important; }
+  .agenda-page .table-wrap table { margin-top:0 !important; }
+  .agenda-page .toolbar h2 { display:none !important; }
+
+  /* Klasifikasi: jangan memindahkan kelompok pertama ke halaman berikutnya hanya
+     karena satu kelompok terlalu tinggi; biarkan konten mengalir dari halaman pertama. */
+  .classification-page .app-content:before,
+  .classification-page .classification-list:before { content:none !important; display:none !important; }
+  .classification-page .print-company-header { margin-bottom:5mm !important; }
+  .classification-page .print-document-title { margin-bottom:4mm !important; }
+  .classification-page .app-layout,
+  .classification-page .app-main,
+  .classification-page .app-content,
+  .classification-page .classification-list { break-before:avoid !important; page-break-before:avoid !important; }
+  .classification-page details.class-item,
+  .classification-page details.subclass,
+  .classification-page .classification-node,
+  .classification-page .classification-node-wrap,
+  .classification-page .classification-tree-content,
+  .classification-page .classification-children {
+    break-inside:auto !important;
+    page-break-inside:auto !important;
+  }
+  .classification-page details.class-item {
+    display:block !important;
+    width:100% !important;
+    margin:0 0 5px !important;
+    padding:0 !important;
+    border:1px solid #444 !important;
+    border-radius:3px !important;
+    background:#fff !important;
+    box-shadow:none !important;
+  }
+  .classification-page details.class-item > summary {
+    display:flex !important;
+    padding:6px 8px !important;
+    border:0 !important;
+    border-bottom:1px solid #777 !important;
+    border-radius:0 !important;
+    background:#edf2f7 !important;
+    color:#111 !important;
+  }
+  .classification-page .classification-tree-content {
+    display:block !important;
+    margin:0 !important;
+    padding:4px 7px 5px 14px !important;
+  }
+  .classification-page .classification-children {
+    display:block !important;
+    margin:3px 0 3px 8px !important;
+    padding:0 0 0 9px !important;
+    border-left:1px solid #999 !important;
+  }
+  .classification-page .classification-node-wrap {
+    display:block !important;
+    margin:3px 0 !important;
+    padding:0 !important;
+    border:0 !important;
+  }
+  .classification-page .classification-node {
+    display:block !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    border:1px solid #888 !important;
+    border-radius:2px !important;
+    background:#fff !important;
+    box-shadow:none !important;
+  }
+  .classification-page .classification-node > summary {
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    padding:5px 7px !important;
+    border:0 !important;
+    background:#f7f9fb !important;
+    color:#111 !important;
+  }
+  .classification-page .classification-node-actions { display:none !important; }
+  .classification-page .classification-children .classification-node {
+    border-color:#aaa !important;
+  }
+  .classification-page .classification-node-name,
+  .classification-page .class-label { color:#111 !important; }
+  .classification-page .class-code {
+    background:#eaf1f8 !important;
+    color:#123d6d !important;
+    border:1px solid #c7d5e4 !important;
+    border-radius:2px !important;
+    padding:3px 6px !important;
+  }
+  .classification-page .pill {
+    background:transparent !important;
+    color:#222 !important;
+    border:0 !important;
+    font-size:8pt !important;
+  }
+  .classification-page .subsub,
+  .classification-page .subsub-row {
+    display:block !important;
+    margin:2px 0 3px 12px !important;
+    padding:4px 7px !important;
+    border:1px solid #bbb !important;
+    border-radius:2px !important;
+    background:#fff !important;
+    color:#111 !important;
+    break-inside:avoid !important;
+    page-break-inside:avoid !important;
+  }
+}
+
+/* Formulir peminjaman arsip */
+#loanModal .modal{width:min(760px,100%)}
+#loanModal .field{display:flex;flex-direction:column;gap:7px;color:var(--ink);font-weight:700;font-size:13px}
+#loanModal .field input,#loanModal .field select,#loanModal .field textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font:inherit;color:var(--ink);background:#fff}
+#loanModal .field input[readonly]{background:#f3f7fc;color:#49627d}
+#loanModal .field small{font-weight:400}
+#loanModal .modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}
+@media(max-width:650px){#loanModal .form-grid{grid-template-columns:1fr}#loanModal .form-grid .full{grid-column:auto}}
+
+
+
+/* FINAL OVERRIDE: klasifikasi arsip benar-benar tanpa garis/kotak saat cetak */
+@media print {
+  .classification-page details,
+  .classification-page details.class-item,
+  .classification-page details.subclass,
+  .classification-page .classification-node,
+  .classification-page .classification-node-wrap,
+  .classification-page .classification-tree-content,
+  .classification-page .classification-children,
+  .classification-page .subsub,
+  .classification-page .subsub-row,
+  .classification-page summary,
+  .classification-page details > summary,
+  .classification-page .class-item > summary,
+  .classification-page .subclass > summary,
+  .classification-page .classification-node > summary {
+    border: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+  .classification-page .classification-children,
+  .classification-page .classification-tree-content,
+  .classification-page .subsub,
+  .classification-page .subsub-row {
+    margin-left: 0 !important;
+    padding-left: 12px !important;
+  }
+  .classification-page .class-code {
+    border: 0 !important;
+    background: #eef3f8 !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+  }
+  .classification-page .classification-node,
+  .classification-page details.class-item,
+  .classification-page details.subclass,
+  .classification-page .subsub,
+  .classification-page .subsub-row {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+
+
+/* Buku agenda cetak: kolom disusun ulang agar Isi Ringkas dan Dari lebih lega,
+   sedangkan Kode Arsip dibuat ringkas. Status/Aksi tetap disembunyikan saat cetak. */
+@media print {
+  .agenda-page .table-wrap { width:100% !important; overflow:visible !important; }
+  .agenda-page .table-wrap table {
+    width:100% !important;
+    min-width:0 !important;
+    table-layout:fixed !important;
+    border-collapse:collapse !important;
+    font-size:8.5pt !important;
+  }
+  .agenda-page .table-wrap th,
+  .agenda-page .table-wrap td {
+    padding:5px 4px !important;
+    vertical-align:middle !important;
+    overflow-wrap:anywhere !important;
+    word-break:normal !important;
+    white-space:normal !important;
+  }
+  /* Surat masuk: Tanggal Terima, Nomor Surat, Tanggal Surat, Dari,
+     Perihal, Isi Ringkas, Kode Arsip (Status/Aksi disembunyikan). */
+  .incoming-agenda .table-wrap th:nth-child(1), .incoming-agenda .table-wrap td:nth-child(1) { width:4% !important; }
+  .incoming-agenda .table-wrap th:nth-child(2), .incoming-agenda .table-wrap td:nth-child(2) { width:10% !important; }
+  .incoming-agenda .table-wrap th:nth-child(3), .incoming-agenda .table-wrap td:nth-child(3) { width:13% !important; }
+  .incoming-agenda .table-wrap th:nth-child(4), .incoming-agenda .table-wrap td:nth-child(4) { width:11% !important; }
+  .incoming-agenda .table-wrap th:nth-child(5), .incoming-agenda .table-wrap td:nth-child(5) { width:16% !important; }
+  .incoming-agenda .table-wrap th:nth-child(6), .incoming-agenda .table-wrap td:nth-child(6) { width:13% !important; }
+  .incoming-agenda .table-wrap th:nth-child(7), .incoming-agenda .table-wrap td:nth-child(7) { width:25% !important; }
+  .incoming-agenda .table-wrap th:nth-child(8), .incoming-agenda .table-wrap td:nth-child(8) { width:8% !important; }
+
+  /* Surat keluar: susunan tabel mengikuti kolom yang tersedia. */
+  .outgoing-agenda .table-wrap th:nth-child(1), .outgoing-agenda .table-wrap td:nth-child(1) { width:4% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(2), .outgoing-agenda .table-wrap td:nth-child(2) { width:10% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(3), .outgoing-agenda .table-wrap td:nth-child(3) { width:13% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(4), .outgoing-agenda .table-wrap td:nth-child(4) { width:11% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(5), .outgoing-agenda .table-wrap td:nth-child(5) { width:16% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(6), .outgoing-agenda .table-wrap td:nth-child(6) { width:13% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(7), .outgoing-agenda .table-wrap td:nth-child(7) { width:25% !important; }
+  .outgoing-agenda .table-wrap th:nth-child(8), .outgoing-agenda .table-wrap td:nth-child(8) { width:8% !important; }
+}
+
+/* Perapihan kolom Status dan Aksi agar badge tidak bertumpuk dengan tombol. */
+.table-wrap td { vertical-align: middle; }
+.table-wrap td:nth-last-child(2) { min-width: 150px; }
+.table-wrap td .status {
+  display:inline-flex; align-items:center; justify-content:center;
+  max-width:145px; min-height:28px; padding:6px 11px;
+  line-height:1.25; white-space:normal; overflow-wrap:anywhere;
+  text-align:center; box-sizing:border-box;
+}
+.table-wrap td .table-actions {
+  display:flex; flex-direction:column; align-items:stretch;
+  gap:7px; min-width:132px; max-width:160px;
+}
+.table-wrap td .table-actions .btn,
+.table-wrap td .table-actions a.btn {
+  width:100%; min-height:38px; display:flex; align-items:center;
+  justify-content:center; box-sizing:border-box; white-space:normal;
+  text-align:center; line-height:1.2; margin:0;
+}
+.table-wrap td .table-actions .attachment-name {
+  max-width:150px; overflow-wrap:anywhere;
+}
+
+/* Penyempurnaan menu Peminjaman Arsip */
+#loanModal .field select{appearance:none;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%234b6685' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:42px!important;transition:border-color .2s,box-shadow .2s}
+#loanModal .field select:focus,#loanModal .field input:focus,#loanModal .field textarea:focus{outline:none;border-color:#6aa3e8;box-shadow:0 0 0 3px #dcecff}
+.loan-subline{display:block;margin-top:4px;font-size:11px}
+.loan-actions{display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;min-width:230px}
+.loan-actions .btn{white-space:nowrap;border-radius:9px;padding:8px 11px;font-weight:700}
+.loan-actions .btn-primary{background:#1769c2;color:#fff;border:1px solid #1769c2}
+.loan-actions .btn-primary:hover{background:#0f559f}
+.loan-actions .btn-danger{background:#c83e50;color:#fff;border:1px solid #c83e50}
+.loan-download[aria-disabled="true"]{opacity:.45;pointer-events:auto;cursor:not-allowed}
+.status-select{appearance:none;min-width:180px;max-width:205px;border:1px solid #d7e2ef;border-radius:999px;padding:9px 34px 9px 13px;font-family:inherit;font-size:12px;font-weight:600;line-height:1.25;color:#244361;background-color:#f3f7fc;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b6685' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;cursor:pointer;transition:all .2s}
+.status-select:focus{outline:none;box-shadow:0 0 0 3px #dcecff;border-color:#78aee8}
+.status-select.pending{background-color:#fff7e6;border-color:#f1d28d;color:#8a5a00}
+.status-select.approved{background-color:#e9f8ef;border-color:#b8e4c8;color:#187345}
+.status-select.rejected{background-color:#fff0f0;border-color:#f0c2c2;color:#b52d3a}
+.status-select.borrowed{background-color:#eaf3ff;border-color:#bfd8fb;color:#175da8}
+.status-select.returned{background-color:#f0edff;border-color:#d2cafa;color:#5c49a5}
+@media(max-width:900px){.loan-actions{min-width:190px}.loan-actions .btn{padding:7px 9px;font-size:11px}.status-select{min-width:165px}}
+
+/* Revisi: tombol aksi Peminjaman Arsip tersusun vertikal */
+.loan-actions{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+  min-width:150px !important;
+  width:100%;
+}
+.loan-actions > .btn,
+.loan-actions > a.btn{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:132px !important;
+  min-height:36px;
+  box-sizing:border-box;
+  margin:0 !important;
+  white-space:nowrap;
+}
+.table-wrap td:last-child{vertical-align:middle;text-align:center;}
+
+
+/* RESPONSIVE FINAL: optimasi tablet dan ponsel */
+html, body { max-width:100%; overflow-x:hidden; }
+img, video, iframe { max-width:100%; }
+input, select, textarea, button { max-width:100%; }
+.table-wrap { width:100%; max-width:100%; -webkit-overflow-scrolling:touch; }
+.table-wrap table { width:100%; }
+@media (max-width:760px) {
+  .container { width:calc(100% - 28px); }
+  .app-layout { grid-template-columns:minmax(0,1fr); }
+  .sidebar { max-width:100%; overflow-x:auto; flex-wrap:nowrap; scrollbar-width:thin; }
+  .sidebar .side-link { flex:0 0 auto; white-space:nowrap; }
+  .app-top { min-width:0; padding:0 12px; }
+  .app-top strong { font-size:13px; }
+  .userchip { min-width:0; font-size:11px; }
+  .app-content { min-width:0; padding:14px 12px; }
+  .toolbar { gap:10px; }
+  .toolbar h2 { font-size:21px; }
+  .toolbar > div { max-width:100%; }
+  .filters { padding:10px; gap:8px; }
+  .filters input, .filters select, .filters button { width:100%; min-width:0; }
+  .card { padding:16px; }
+  .table-wrap table { min-width:760px; }
+  .table-wrap th, .table-wrap td { padding:9px 8px; }
+  .table-wrap td .table-actions { min-width:120px; }
+  .loan-actions > .btn, .loan-actions > a.btn { width:120px !important; }
+  .modal-backdrop { padding:8px; align-items:flex-end; }
+  .modal { width:100%; max-height:92vh; border-radius:16px 16px 8px 8px; padding:18px; }
+  .form-grid { gap:12px; }
+  .disposition-paper { overflow-wrap:anywhere; }
+  .paper-grid { grid-template-columns:1fr; }
+  .login-panel { padding:16px; }
+  .login-card { padding:22px 18px; }
+}
+@media (max-width:420px) {
+  h1 { font-size:30px; }
+  h2 { font-size:23px; }
+  .app-top .userchip .avatar { width:31px; height:31px; }
+  .welcome-banner { padding:17px; }
+  .side-link { font-size:11px; padding:8px; }
+  .toolbar .btn, .toolbar button { width:100%; }
+}
+@media print {
+  html, body { overflow:visible !important; }
+  .table-wrap { overflow:visible !important; }
+}
+
+
+/* FINAL TABLE ALIGNMENT: seluruh isi tabel dibuat rata tengah dan sejajar */
+.table-wrap table {
+  width: 100%;
+  min-width: 1280px;
+  table-layout: fixed;
+}
+.table-wrap th,
+.table-wrap td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+.table-wrap th {
+  white-space: normal;
+}
+.table-wrap td {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.table-wrap td:nth-child(10) {
+  white-space: normal;
+}
+.table-wrap .table-actions {
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  min-width: 0 !important;
+  width: 100%;
+}
+.table-wrap .table-actions .btn {
+  flex: 0 1 auto !important;
+  min-width: 78px;
+  text-align: center;
+}
+.table-wrap .status {
+  margin-left: auto;
+  margin-right: auto;
+  white-space: normal;
+  max-width: 100%;
+}
+@media (min-width: 901px) {
+  .table-wrap table { min-width: 1280px; }
+}
+@media (max-width: 900px) {
+  .table-wrap table { min-width: 1180px; }
+  .table-wrap th, .table-wrap td { padding: 10px 7px; }
+  .table-wrap .table-actions { gap: 6px; }
+}
+
+
+/* FINAL PEMINJAMAN ARSIP: kolom proporsional, tombol tidak keluar sel */
+.loan-page .table-wrap{width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden}
+.loan-page .table-wrap table{
+  width:100% !important;
+  min-width:1180px !important;
+  table-layout:fixed !important;
+}
+.loan-page .table-wrap th,
+.loan-page .table-wrap td{
+  text-align:center !important;
+  vertical-align:middle !important;
+  padding:11px 8px !important;
+  overflow-wrap:anywhere;
+}
+.loan-page .table-wrap th:nth-child(1),.loan-page .table-wrap td:nth-child(1){width:48px}
+.loan-page .table-wrap th:nth-child(2),.loan-page .table-wrap td:nth-child(2){width:105px}
+.loan-page .table-wrap th:nth-child(3),.loan-page .table-wrap td:nth-child(3){width:150px}
+.loan-page .table-wrap th:nth-child(4),.loan-page .table-wrap td:nth-child(4){width:135px}
+.loan-page .table-wrap th:nth-child(5),.loan-page .table-wrap td:nth-child(5){width:110px}
+.loan-page .table-wrap th:nth-child(6),.loan-page .table-wrap td:nth-child(6){width:110px}
+.loan-page .table-wrap th:nth-child(7),.loan-page .table-wrap td:nth-child(7){width:205px}
+.loan-page .table-wrap th:nth-child(8),.loan-page .table-wrap td:nth-child(8){width:155px}
+.loan-page .table-wrap th:nth-child(9),.loan-page .table-wrap td:nth-child(9){width:162px}
+.loan-page .loan-actions{
+  width:100% !important;
+  min-width:0 !important;
+  max-width:100%;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+}
+.loan-page .loan-actions>.btn,
+.loan-page .loan-actions>a.btn{
+  width:116px !important;
+  min-width:0 !important;
+  max-width:100%;
+  min-height:36px;
+  padding:8px 10px !important;
+  margin:0 !important;
+  box-sizing:border-box;
+  white-space:nowrap;
+}
+.loan-page .status-select{max-width:100%;width:100%;min-width:0}
+@media(max-width:760px){
+ .loan-page .table-wrap table{min-width:1180px !important}
+ .loan-page .loan-actions>.btn,.loan-page .loan-actions>a.btn{width:108px !important}
+}
+
+
+/* Final: jarak Status dan Aksi pada Peminjaman Arsip */
+.loan-page .table-wrap{overflow-x:auto!important;width:100%;max-width:100%}
+.loan-page .table-wrap table{min-width:1260px!important;width:100%!important;table-layout:fixed!important}
+.loan-page .table-wrap th,.loan-page .table-wrap td{text-align:center!important;vertical-align:middle!important}
+.loan-page .table-wrap th:nth-child(8),.loan-page .table-wrap td:nth-child(8){width:190px!important;padding-right:22px!important;border-right:0!important}
+.loan-page .table-wrap th:nth-child(9),.loan-page .table-wrap td:nth-child(9){width:205px!important;padding-left:22px!important;border-left:0!important}
+.loan-page .loan-actions{min-width:0!important;width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:9px!important}
+.loan-page .loan-actions>.btn,.loan-page .loan-actions>a.btn{width:132px!important;max-width:100%!important;margin:0!important}
+.loan-page .status-select{width:150px!important;max-width:100%;min-width:0!important}
+.loan-page .toolbar-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+@media(max-width:760px){.loan-page .toolbar-actions{width:100%;justify-content:stretch}.loan-page .toolbar-actions .btn{flex:1 1 180px}}
+
+/* FINAL: posisi tombol Aksi Surat Masuk/Keluar tepat di bawah judul kolom */
+.agenda-page.incoming-agenda .table-wrap table,
+.agenda-page.outgoing-agenda .table-wrap table {
+  table-layout: fixed !important;
+  min-width: 1450px !important;
+}
+.agenda-page.incoming-agenda .table-wrap th:last-child,
+.agenda-page.incoming-agenda .table-wrap td:last-child,
+.agenda-page.outgoing-agenda .table-wrap th:last-child,
+.agenda-page.outgoing-agenda .table-wrap td:last-child {
+  width: 180px !important;
+  min-width: 180px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+.agenda-page.incoming-agenda .table-wrap th:nth-last-child(2),
+.agenda-page.incoming-agenda .table-wrap td:nth-last-child(2),
+.agenda-page.outgoing-agenda .table-wrap th:nth-last-child(2),
+.agenda-page.outgoing-agenda .table-wrap td:nth-last-child(2) {
+  width: 155px !important;
+  min-width: 155px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+.agenda-page.incoming-agenda .table-wrap td:last-child .table-actions,
+.agenda-page.outgoing-agenda .table-wrap td:last-child .table-actions {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  padding: 2px 5px !important;
+  box-sizing: border-box !important;
+}
+.agenda-page.incoming-agenda .table-wrap td:last-child .table-actions > .btn,
+.agenda-page.incoming-agenda .table-wrap td:last-child .table-actions > a.btn,
+.agenda-page.outgoing-agenda .table-wrap td:last-child .table-actions > .btn,
+.agenda-page.outgoing-agenda .table-wrap td:last-child .table-actions > a.btn {
+  width: 142px !important;
+  max-width: 100% !important;
+  min-height: 38px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: normal !important;
+  box-sizing: border-box !important;
+}
+.agenda-page.incoming-agenda .table-wrap td:last-child .attachment-name,
+.agenda-page.outgoing-agenda .table-wrap td:last-child .attachment-name {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  overflow-wrap: anywhere !important;
+}
+.agenda-page.incoming-agenda .table-wrap th:last-child,
+.agenda-page.outgoing-agenda .table-wrap th:last-child { text-align: center !important; }
+
+
+/* FIX FINAL: tombol Aksi benar-benar tepat di bawah judul kolom Aksi
+   pada Surat Masuk dan Surat Keluar. Lebar dan pusat header/cell disamakan. */
+.agenda-page.incoming-agenda .table-wrap table,
+.agenda-page.outgoing-agenda .table-wrap table {
+  table-layout: fixed !important;
+}
+.agenda-page.incoming-agenda .table-wrap thead th:last-child,
+.agenda-page.outgoing-agenda .table-wrap thead th:last-child,
+.agenda-page.incoming-agenda .table-wrap tbody td:last-child,
+.agenda-page.outgoing-agenda .table-wrap tbody td:last-child {
+  width: 190px !important;
+  min-width: 190px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+.agenda-page.incoming-agenda .table-wrap tbody td:last-child .table-actions,
+.agenda-page.outgoing-agenda .table-wrap tbody td:last-child .table-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+}
+.agenda-page.incoming-agenda .table-wrap tbody td:last-child .table-actions > .btn,
+.agenda-page.incoming-agenda .table-wrap tbody td:last-child .table-actions > a.btn,
+.agenda-page.outgoing-agenda .table-wrap tbody td:last-child .table-actions > .btn,
+.agenda-page.outgoing-agenda .table-wrap tbody td:last-child .table-actions > a.btn {
+  display: flex !important;
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  margin: 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}

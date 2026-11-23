@@ -1,0 +1,62 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agenda Surat Keluar | PT Digital Mandiri</title><link rel="stylesheet" href="style.css"><style>
+/* Buku Agenda: hasil cetak berhenti sampai kolom Kode Arsip.
+   Kolom Status dan Aksi tetap tersedia pada tampilan aplikasi, tetapi tidak dicetak. */
+@media print {
+  body:has(.print-document-title) .table-wrap table thead th:nth-child(9),
+  body:has(.print-document-title) .table-wrap table tbody td:nth-child(9),
+  body:has(.print-document-title) .table-wrap table thead th:nth-child(10),
+  body:has(.print-document-title) .table-wrap table tbody td:nth-child(10) {
+    display: none !important;
+  }
+}
+</style><style>
+/* Pratinjau layar penuh untuk seluruh halaman yang memanggil window.print() */
+#print-preview-overlay{position:fixed;inset:0;z-index:100000;background:#e8edf3;display:none;flex-direction:column}
+#print-preview-overlay.is-open{display:flex}
+#print-preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:#123b68;color:#fff}
+#print-preview-toolbar .actions{display:flex;gap:8px;flex-wrap:wrap}
+#print-preview-toolbar button{border:0;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer}
+#print-preview-toolbar .do-print{background:#fff;color:#123b68}
+#print-preview-toolbar .go-back{background:#dce7f5;color:#123b68}
+#print-preview-scroll{flex:1;overflow:auto;padding:22px;display:flex;justify-content:center;align-items:flex-start}
+#print-preview-paper{background:#fff;width:min(1180px,100%);min-height:700px;padding:24px;box-shadow:0 4px 20px #0002;box-sizing:border-box}
+#print-preview-paper .sidebar,#print-preview-paper .app-top,#print-preview-paper .no-print,
+#print-preview-paper button,#print-preview-paper .toolbar .btn{display:none!important}
+#print-preview-paper .app-content{padding:0!important;margin:0!important}
+@media(max-width:700px){#print-preview-toolbar{align-items:flex-start;flex-direction:column}#print-preview-scroll{padding:8px}#print-preview-paper{padding:10px}}
+@media print{#print-preview-overlay{display:none!important}}
+</style></head><body class="agenda-page outgoing-agenda"><div class="app-layout"><aside class="sidebar"><div class="side-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PT DIGITAL<small>MANDIRI</small></span></a></div><div class="side-label">Menu Utama</div><a class="side-link " href="dashboard-admin.html"><span class="ico">▦</span>Beranda</a><a class="side-link " href="surat-masuk.html"><span class="ico">▤</span>Surat Masuk</a><a class="side-link active" href="surat-keluar.html"><span class="ico">↗</span>Surat Keluar</a><a class="side-link " href="klasifikasi-arsip.html"><span class="ico">▧</span>Klasifikasi Arsip</a><a class="side-link " href="peminjaman-arsip.html"><span class="ico">⌂</span>Peminjaman Arsip</a><a class="side-link " href="profil-pengguna.html"><span class="ico">♙</span>Profil Pengguna</a><a class="side-link " href="manajemen-pengguna.html"><span class="ico">♧</span>Manajemen Pengguna</a><a class="side-link " href="riwayat-status.html"><span class="ico">◷</span>Riwayat Status</a><a class="side-link" href="pengaturan-panduan.html"><span class="ico">⚙</span>Pengaturan &amp; Panduan</a><div class="side-label">Akun</div><a class="side-link" href="index.html"><span class="ico">↩</span>Kembali ke Beranda</a></aside><main class="app-main"><div class="app-top"><div><strong>PT DIGITAL MANDIRI</strong><div class="small muted">Sistem Informasi Kearsipan</div></div><div class="userchip"><span class="avatar">A</span><span><b>Admin</b><br><span class="muted">Admin</span></span><a class="btn btn-outline btn-sm" href="index.html">Keluar</a></div></div><div class="app-content"><div class="print-company-header"><img src="assets/logo-digital-mandiri.png" alt="Logo PT Digital Mandiri"><div class="print-company-info"><strong>PT DIGITAL MANDIRI</strong><span>Teknologi Informasi (IT)</span><span>Jl. Teknologi No. 15, Makassar</span><span>Email: info@digitalmandiri.co.id | Telp: (0411) 456789</span></div></div>
+<div class="print-document-title">BUKU AGENDA SURAT KELUAR</div><div class="toolbar"><div><div class="breadcrumbs">Beranda　›　Surat Keluar</div><h2>Agenda Surat Keluar</h2><p class="muted small">Pencatatan surat keluar sesuai buku agenda.</p></div><div class="table-actions"><button class="btn btn-outline print-page">⎙ Cetak Buku Agenda</button><button class="btn open-modal" data-modal="addMailModal">＋ Tambah Surat Keluar</button></div></div><div class="filters"><input id="tableSearch" placeholder="Cari nomor, tujuan, perihal, kode arsip..."></div><div class="table-wrap"><table><thead><tr><th>No</th><th>Tanggal Terima</th><th>Nomor Surat</th><th>Tanggal Surat</th><th>Kepada</th><th>Perihal</th><th>Isi Ringkas</th><th>Kode Arsip</th><th>Status</th><th>Aksi</th></tr></thead><tbody><tr><td>1</td><td>2 September 2026</td><td>001/110/DM/IX/2026</td><td>1 September 2026</td><td>PT Pearl Petal Place</td><td>Perkenalan Perusahaan</td><td>Mengirimkan surat perkenalan profil perusahaan.</td><td>PPP</td><td><span class="status ">Terkirim</span></td><td><div class="table-actions"><button class="btn btn-light btn-sm print-mail" title="Cetak lembar data; pilih Save as PDF">PDF</button><button class="btn btn-light btn-sm attach-pdf" title="Lampirkan surat PDF">Lampirkan PDF</button><input class="mail-attachment hidden" type="file" accept="application/pdf"><a class="btn btn-light btn-sm view-attachment hidden" href="#">Buka PDF</a><span class="attachment-name small muted"></span><button class="btn btn-light btn-sm demo-action" data-message="Fitur edit perlu dihubungkan ke database." title="Edit">✎</button><button class="btn btn-danger btn-sm delete-row" title="Hapus">×</button></div></td></tr><tr><td>2</td><td>3 September 2026</td><td>002/110/DM/IX/2026</td><td>2 September 2026</td><td>PT Ibrahim</td><td>Perkenalan Perusahaan</td><td>Mengirimkan surat perkenalan profil perusahaan.</td><td>MKS</td><td><span class="status ">Terkirim</span></td><td><div class="table-actions"><button class="btn btn-light btn-sm print-mail" title="Cetak lembar data; pilih Save as PDF">PDF</button><button class="btn btn-light btn-sm attach-pdf" title="Lampirkan surat PDF">Lampirkan PDF</button><input class="mail-attachment hidden" type="file" accept="application/pdf"><a class="btn btn-light btn-sm view-attachment hidden" href="#">Buka PDF</a><span class="attachment-name small muted"></span><button class="btn btn-light btn-sm demo-action" data-message="Fitur edit perlu dihubungkan ke database." title="Edit">✎</button><button class="btn btn-danger btn-sm delete-row" title="Hapus">×</button></div></td></tr><tr><td>3</td><td>4 September 2026</td><td>003/120.2/DM/IX/2026</td><td>3 September 2026</td><td>PT Pearl Petal Place</td><td>Permintaan Penawaran</td><td>Meminta rincian harga dan katalog dekorasi interior serta tanaman hias.</td><td>03/06</td><td><span class="status ">Terkirim</span></td><td><div class="table-actions"><button class="btn btn-light btn-sm print-mail" title="Cetak lembar data; pilih Save as PDF">PDF</button><button class="btn btn-light btn-sm attach-pdf" title="Lampirkan surat PDF">Lampirkan PDF</button><input class="mail-attachment hidden" type="file" accept="application/pdf"><a class="btn btn-light btn-sm view-attachment hidden" href="#">Buka PDF</a><span class="attachment-name small muted"></span><button class="btn btn-light btn-sm demo-action" data-message="Fitur edit perlu dihubungkan ke database." title="Edit">✎</button><button class="btn btn-danger btn-sm delete-row" title="Hapus">×</button></div></td></tr><tr><td>4</td><td>8 September 2026</td><td>004/120.2/DM/IX/2026</td><td>7 September 2026</td><td>PT Ibrahim</td><td>Permintaan Penawaran</td><td>Meminta rincian harga dan katalog perangkat IT.</td><td>LOG</td><td><span class="status ">Draf</span></td><td><div class="table-actions"><button class="btn btn-light btn-sm print-mail" title="Cetak lembar data; pilih Save as PDF">PDF</button><button class="btn btn-light btn-sm attach-pdf" title="Lampirkan surat PDF">Lampirkan PDF</button><input class="mail-attachment hidden" type="file" accept="application/pdf"><a class="btn btn-light btn-sm view-attachment hidden" href="#">Buka PDF</a><span class="attachment-name small muted"></span><button class="btn btn-light btn-sm demo-action" data-message="Fitur edit perlu dihubungkan ke database." title="Edit">✎</button><button class="btn btn-danger btn-sm delete-row" title="Hapus">×</button></div></td></tr></tbody></table></div>
+<div class="modal-backdrop" id="addMailModal"><form class="modal" id="addMailForm"><div class="modal-head"><h2>Tambah Surat Keluar</h2><button type="button" class="close-modal">Tutup ✕</button></div><div class="notice">Data surat disimpan ke database SQLite pada komputer/server aplikasi.</div><div class="form-grid"><div class="field"><label>Tanggal Kirim</label><input type="date" name="tanggalKirim" required></div><div class="field"><label>Nomor Surat</label><input name="nomorSurat" required></div><div class="field"><label>Tanggal Surat</label><input type="date" name="tanggalSurat"></div><div class="field"><label>Kepada</label><input name="kepada" required></div><div class="field"><label>Perihal</label><input name="perihal" required></div><div class="field"><label>Kode Arsip (sesuai buku agenda)</label><input name="kodeArsip" type="text" placeholder="Contoh: PPP, MKS, 05/09, LOG, IB, 130.2" required><span class="muted small">Ketik kode persis sesuai buku agenda; tidak perlu memilih klasifikasi utama atau sub-bab.</span></div><div class="field full"><label>Isi Ringkas</label><textarea name="isiRingkas" rows="3"></textarea></div><div class="field full"><label>Lampiran Surat (PDF, opsional)</label><input type="file" name="lampiranPDF" accept="application/pdf"><span class="muted small">Lampiran PDF akan disimpan pada server lokal aplikasi.</span></div></div><div style="display:flex;justify-content:end;gap:10px;margin-top:18px"><button type="button" class="btn btn-outline close-modal">Batal</button><button type="submit">Simpan Surat</button></div></form></div></div></main></div><div id="toast" class="toast"></div><script src="db.js"></script>
+<script>
+(function(){
+  if(window.__globalPrintPreviewInstalled)return;
+  window.__globalPrintPreviewInstalled=true;
+  const nativePrint=window.print.bind(window);
+  function openGlobalPrintPreview(){
+    let overlay=document.getElementById('print-preview-overlay');
+    if(!overlay){
+      overlay=document.createElement('div');overlay.id='print-preview-overlay';
+      overlay.innerHTML='<div id="print-preview-toolbar"><strong>Pratinjau Dokumen Sebelum Cetak</strong><div class="actions"><button type="button" class="go-back" id="globalPreviewBack">Kembali</button><button type="button" class="do-print" id="globalPreviewPrint">Cetak Sekarang</button></div></div><div id="print-preview-scroll"><div id="print-preview-paper"></div></div>';
+      document.body.appendChild(overlay);
+      overlay.querySelector('#globalPreviewBack').addEventListener('click',closeGlobalPrintPreview);
+      overlay.querySelector('#globalPreviewPrint').addEventListener('click',function(){closeGlobalPrintPreview();nativePrint();});
+    }
+    const paper=overlay.querySelector('#print-preview-paper');
+    paper.innerHTML='';
+    const source=document.querySelector('.app-content')||document.querySelector('.classification-page')||document.querySelector('main')||document.body;
+    const clone=source.cloneNode(true);
+    clone.querySelectorAll('button,.btn,.no-print,.sidebar,.app-top,[data-no-print]').forEach(el=>el.remove());
+    paper.appendChild(clone);
+    overlay.classList.add('is-open');document.body.style.overflow='hidden';
+  }
+  function closeGlobalPrintPreview(){
+    const overlay=document.getElementById('print-preview-overlay');
+    if(overlay)overlay.classList.remove('is-open');
+    document.body.style.overflow='';
+  }
+  window.print=openGlobalPrintPreview;
+  window.addEventListener('keydown',e=>{if(e.key==='Escape')closeGlobalPrintPreview()});
+})();
+</script>
+</body></html>
